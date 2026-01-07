@@ -66,4 +66,4 @@ classDiagram
     Membership "1" --> "*" BookSuggestion
     Membership "1" --> "*" Vote
     Meeting "1" --> "0..1" Book
-    ´´´
+```
