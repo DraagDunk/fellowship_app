@@ -17,9 +17,13 @@ classDiagram
         +int id
         +string name
     }
+    class Location {
+        +int id
+        +string name
+    }
     class Meeting {
         +int id
-        +datetime date
+        +datetime time
         +string location
         +Book book
         +BookClub bookClub
@@ -32,8 +36,9 @@ classDiagram
     }
     class VotingRound {
         +int id
-        +datetime startDate
-        +datetime endDate
+        +string title
+        +datetime startTime
+        +datetime endTime
         +bool isActive
         +BookClub bookClub
     }
@@ -46,24 +51,26 @@ classDiagram
     class BookSuggestion {
         +int id
         +Membership suggestedBy
+        +string Recommendation
         +Book book
         +VotingBatch batch
     }
-    class Vote {
+    class BookVote {
         +int id
         +Membership membership
         +BookSuggestion suggestion
     }
 
-    User "1" --> "1" Membership
+    User "1" --> "*" Membership
     BookClub "1" --> "*" Membership
     BookClub "1" --> "*" Meeting
     BookClub "1" --> "*" VotingRound
+    BookClub "1" --> "1" Location
     VotingRound "1" --> "*" VotingBatch
     VotingBatch "1" --> "*" BookSuggestion
     BookSuggestion "1" --> "1" Book
-    BookSuggestion "1" --> "*" Vote
+    BookSuggestion "1" --> "*" BookVote
     Membership "1" --> "*" BookSuggestion
-    Membership "1" --> "*" Vote
+    Membership "1" --> "*" BookVote
     Meeting "1" --> "0..1" Book
 ```
