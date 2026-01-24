@@ -1,14 +1,14 @@
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:18
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - '5432:5432'
     volumes:
-      - fellowship_app-db:/var/lib/postgresql/data
-  
+      - fellowship_app-db:/var/lib/postgresql
+
   fellowship_app:
     build:
       context: .
