@@ -1,0 +1,25 @@
+{
+  "name": "fellowship_app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "preinstall": "npm install -g nodemon",
+    "start": "nodemon -L ./dist/bin/www.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.10",
+    "express": "^4.22.1",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "@types/debug": "^4.1.12",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.0.10",
+    "typescript": "^5.9.3"
+  }
+}

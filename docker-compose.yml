@@ -21,6 +21,8 @@ services:
       - postgres
     ports:
       - '3000:3000'
+    volumes:
+      - ./src/:/opt/app/src
 
 volumes:
   fellowship_app-db:
