@@ -23,6 +23,8 @@ services:
       - '3000:3000'
     volumes:
       - ./src/:/opt/app/src
+      - ./src/views:/opt/app/dist/views
+      - ./src/public:/opt/app/dist/public
 
 volumes:
   fellowship_app-db:

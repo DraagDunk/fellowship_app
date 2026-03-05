@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npm install -g nodemon",
-    "start": "nodemon -L ./dist/bin/www.js"
+    "start": "nodemon -e ts,ejs,css --watch 'src/**/*' --exec 'tsc && node dist/bin/www.js'"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
