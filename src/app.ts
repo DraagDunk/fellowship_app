@@ -4,6 +4,7 @@ import logger from 'morgan';
 import path from 'path';
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
+import db from './db/models';
 
 const app: Express = express();
 
@@ -18,5 +19,10 @@ app.set('views', path.join(__dirname, '/views'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+// Tests if the database is available and fail fast if isn't
+db.sequelize.authenticate()
+  .then(() => console.log('Database connected'))
+  .catch(err => console.error('Connection error:', err));
 
 export default app;
