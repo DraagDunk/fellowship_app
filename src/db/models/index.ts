@@ -19,11 +19,13 @@ const sequelize = new Sequelize(
   } as Options
 );
 
+// Initialize `db` with the required properties
 const db: DbInterface = {
   sequelize,
   Sequelize,
-};
+} as DbInterface;
 
+// Load all models
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
@@ -34,7 +36,7 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    const model = require(path.join(__dirname, file)).default(sequelize, DataTypes);
+    const model = require(path.join(__dirname, file))(sequelize, DataTypes);
     db[model.name] = model;
   });
 

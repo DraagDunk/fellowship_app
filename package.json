@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon -e ts,ejs,css --watch 'src/**/*' --exec 'tsc && node dist/bin/www.js'"
+    "migration:generate": "node scripts/generate-migration.js",
+    "start-dev": "nodemon -e ts,ejs,css --watch 'src/**/*' --exec 'tsc && node dist/bin/www.js'"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
