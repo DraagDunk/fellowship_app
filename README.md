@@ -18,12 +18,32 @@ If you have not run the application before, you may need to build it first:
 docker compose build
 ```
 
-If you want to install python dependencies locally (for the sake) of your IDE for example), start a virtual environment before installing using pip:
+and then migrate after the containers are up:
+
+```bash
+docker compose exec fellowship_app python3 manage.py migrate
+```
+
+If you want to install python dependencies locally (for the sake of your IDE for example), start a virtual environment before installing using pip:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+## Installing new dependencies
+
+If you are running in a virtual environment (you should be), then you can install new dependencies with
+
+```bash
+pip install <package>
+```
+
+then add it to the requirements.txt file using
+
+```bash
+pip freeze > requirements.txt
 ```
 
 ## Environment variables
@@ -46,3 +66,13 @@ These environment variables are used to configure the connection to the database
 | DJANGO_SECRET_KEY | The secret key for the django project | super duper secret |
 | DEBUG | Whether or not the project is in debug mode | 0 |
 | DJANGO_ALLOWED_HOSTS | Comma-separated list of allowed host addresses | 127.0.0.1 |
+
+## Importing test data fixture
+
+In the `data/` folder, there is a fixture containing a few users related to a club. You can import this data to the database using
+
+```bash
+docker compose exec fellowship_app python3 manage.py loaddata data/fellowship.json
+```
+
+After this, you can log in with the username "gandalf" and the password "admin".
