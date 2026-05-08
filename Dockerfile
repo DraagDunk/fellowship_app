@@ -35,4 +35,7 @@ USER appuser
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "fellowship_app.wsgi:application"]
+RUN python3 manage.py collectstatic --no-input
+RUN python3 manage.py migrate
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--reload", "fellowship_app.wsgi:application"]
