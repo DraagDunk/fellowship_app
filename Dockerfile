@@ -1,23 +1,20 @@
-FROM node:18.19.1-alpine3.19
+FROM python:3.12
 
-ENV NODE_ENV=development
+RUN mkdir /app
 
-RUN mkdir -p /opt/app dist/views dist/public
-WORKDIR /opt/app
+WORKDIR /app
 
-COPY package.json package-lock.json .
-RUN npm install
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
+RUN pip install --upgrade pip
 
-COPY tsconfig.json .
-COPY .sequelizerc .
-COPY src/ ./src/
+COPY requirements.txt /app/
 
-RUN npx tsc
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 3000
+COPY . /app/
 
-ENTRYPOINT ["./entrypoint.sh"]
-CMD ["npm", "run", "start-dev"]
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
