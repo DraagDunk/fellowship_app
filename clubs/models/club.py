@@ -10,9 +10,18 @@ class Club(models.Model):
 
     members = models.ManyToManyField(get_user_model(), verbose_name=_("members"), through="ClubMembership", related_name="clubs")
 
+    def __str__(self):
+        return self.name
+
+    def managers(self):
+        return get_user_model().objects.filter(memberships__manager=True, memberships__club=self)
+
+    def regular_members(self):
+        return get_user_model().objects.filter(memberships__manager=False, memberships__club=self)
+
 
 class ClubMembership(models.Model):
-    person = models.ForeignKey(get_user_model(), verbose_name=_("person"), on_delete=models.CASCADE, related_name="memberships")
+    person = models.OneToOneField(get_user_model(), verbose_name=_("person"), on_delete=models.CASCADE, related_name="memberships")
     club = models.ForeignKey(Club, verbose_name=_("club"), on_delete=models.CASCADE, related_name="memberships")
 
     manager = models.BooleanField(verbose_name=_("manager"), default=False)
