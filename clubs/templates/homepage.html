@@ -1,0 +1,15 @@
+{% extends 'shared/base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {{ club.name }}
+{% endblock title %}
+
+{% block content %}
+    <h1>{{ club.name }}</h1>
+    <p>
+        {% blocktranslate trimmed with name=club.name %}
+            Hello and welcome to {{ name }}!
+        {% endblocktranslate %}
+    </p>
+{% endblock content %}
