@@ -12,4 +12,22 @@
             Hello and welcome to {{ name }}!
         {% endblocktranslate %}
     </p>
+
+    <div>
+        {% translate "Managers" %}:
+        <ul>
+            {% for manager in club.managers %}
+                <li>{{ manager.get_full_name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        {% translate "Members" %}:
+        <ul>
+            {% for member in club.regular_members %}
+                <li>{{ member.get_full_name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock content %}
