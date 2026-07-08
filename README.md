@@ -67,6 +67,24 @@ These environment variables are used to configure the connection to the database
 | DEBUG | Whether or not the project is in debug mode | 0 |
 | DJANGO_ALLOWED_HOSTS | Comma-separated list of allowed host addresses | 127.0.0.1 |
 
+### Example .env file contents
+
+#### With postgres db
+
+```
+DATABASE_NAME=default_db
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_ENGINE=postgresql
+DATABASE_HOST=db
+DATABASE_PORT=5432
+
+DJANGO_SECRET_KEY=super duper secret key
+DJANGO_ALLOWED_HOSTS=127.0.0.1
+
+DEBUG=0
+```
+
 ## Importing test data fixture
 
 In the `data/` folder, there is a fixture containing a few users related to a club. You can import this data to the database using
