@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from ..models.club import Club
 
 
-class HomePageView(TemplateView, LoginRequiredMixin):
+class HomePageView(LoginRequiredMixin, TemplateView):
     template_name = "homepage.html"
 
     def get_queryset(self):
