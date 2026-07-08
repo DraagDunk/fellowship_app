@@ -21,11 +21,9 @@ RUN useradd -m -r appuser && \
     mkdir /app && \
     mkdir /app/staticfiles &&\
     mkdir /app/static &&\
-    mkdir /fellowship-dev && \
     chown -R appuser /app && \
     chown -R appuser /app/staticfiles && \
-    chown -R appuser /app/static && \
-    chown -R appuser /fellowship-dev
+    chown -R appuser /app/static
 
 COPY --from=builder /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
@@ -41,4 +39,4 @@ USER appuser
 
 EXPOSE 8000
 
-ENTRYPOINT ["./entrypoint-dev.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
