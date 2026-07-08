@@ -4,10 +4,12 @@ A simple django app in docker.
 
 ## How to
 
+### Development
+
 To run the application locally, simply run
 
 ```bash
-docker compose up -d
+docker compose -f docker-compose.dev.yml up -d
 ```
 
 and navigate to `localhost:8000`.
@@ -15,7 +17,7 @@ and navigate to `localhost:8000`.
 If you have not run the application before, you may need to build it first:
 
 ```bash
-docker compose build
+docker compose docker-compose.dev.yml build
 ```
 
 and then migrate after the containers are up:
