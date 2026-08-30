@@ -6,3 +6,4 @@ npm-debug.log
 .DS_Store
 __pycache__
 .venv
+default_db
