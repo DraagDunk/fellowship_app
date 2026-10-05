@@ -21,7 +21,7 @@ services:
 
   fellowship_app:
     # TODO: Image here should be updated when we have the real docker repository
-    image: <INSERT IMAGE NAME HERE>:latest
+    image: draagdunk/fellowship_app:latest
     container_name: app
     depends_on:
       fellowship_db:
