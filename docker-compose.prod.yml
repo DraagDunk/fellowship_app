@@ -1,5 +1,5 @@
 services:
-  db:
+  fellowship_db:
     image: postgres:18
     container_name: db
     environment:
@@ -20,12 +20,11 @@ services:
       timeout: 10s
 
   fellowship_app:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+    # TODO: Image here should be updated when we have the real docker repository
+    image: <INSERT IMAGE NAME HERE>:latest
     container_name: app
     depends_on:
-      db:
+      fellowship_db:
         condition: service_healthy
         restart: true
     ports:
@@ -33,11 +32,10 @@ services:
     env_file:
       - .env
     volumes:
-      - .:/app
+      - static:/app/static
       - staticfiles:/app/staticfiles
-      - fellowship-dev:/fellowship-dev
 
 volumes:
   fellowship_app-db:
+  static:
   staticfiles:
-  fellowship-dev:
