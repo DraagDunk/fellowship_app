@@ -9,7 +9,7 @@ A simple django app in docker.
 To run the application locally, simply run
 
 ```bash
-docker compose -f docker-compose.dev.yml up -d
+docker compose up -d
 ```
 
 and navigate to `localhost:8000`.
@@ -17,7 +17,7 @@ and navigate to `localhost:8000`.
 If you have not run the application before, you may need to build it first:
 
 ```bash
-docker compose docker-compose.dev.yml build
+docker compose build
 ```
 
 and then migrate after the containers are up:
@@ -106,20 +106,18 @@ DEV_TEST_DATA_PROVISION=1
 
 ## Building and publish the prod image
 
-TODO: Info here should be updated when we have the real docker repository.
-
 ### Building image
 
 To build the prod image run
 
 ```
-docker build -t <USERNAME>/<IMAGE NAME>:<TAG NAME> .
+docker build -t draagdunk/fellowship_app:<TAG NAME> .
 ```
 
 Example:
 
 ```
-docker build -t zargess/fellowship_bookclub:latest .
+docker build -t draagdunk/fellowship_app:latest .
 ```
 
 ### Publish image
@@ -127,13 +125,13 @@ docker build -t zargess/fellowship_bookclub:latest .
 To publish the image run
 
 ```
-docker publish <USERNAME>/<IMAGE NAME>:<TAG NAME>
+docker push draagdunk/fellowship_app:<TAG NAME>
 ```
 
 Example:
 
 ```
-docker publish zargess/fellowship_bookclub:latest
+docker push draagdunk/fellowship_app:latest
 ```
 
 ## Importing test data fixture
