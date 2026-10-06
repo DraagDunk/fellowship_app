@@ -1,0 +1,28 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% translate "Books" %}{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "styles/book_styles.css" %}"/>
+{% endblock head%}
+
+{% block content %}
+{% for book in books %}
+    <div class="book_container">
+        <div>
+            <h2>{{ book.title }}</h2>
+            {% if book.subtitle %}
+                <i>{{ book.subtitle }}</i>
+            {% endif %}
+
+            {% if book.series %}
+                {{ book.series }} {{ book.series_number }}
+            {% endif %}
+        </div>
+
+        <img src="{{ book.cover_image }}"/>
+    </div>
+{% endfor %}
+{% endblock content %}

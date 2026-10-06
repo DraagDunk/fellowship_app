@@ -19,10 +19,8 @@ FROM python:3.13-slim
 
 RUN useradd -m -r appuser && \
     mkdir /app && \
-    mkdir /app/staticfiles &&\
     mkdir /app/static &&\
     chown -R appuser /app && \
-    chown -R appuser /app/staticfiles && \
     chown -R appuser /app/static
 
 COPY --from=builder /usr/local/lib/python3.13/site-packages/ /usr/local/lib/python3.13/site-packages/
@@ -30,7 +28,7 @@ COPY --from=builder /usr/local/bin/ /usr/local/bin/
 
 WORKDIR /app
 
-COPY --chown=appuser:appuer . .
+COPY --chown=appuser:appuser . .
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1

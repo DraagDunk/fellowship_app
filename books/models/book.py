@@ -33,3 +33,6 @@ class BookVersion(models.Model):
 
     def __str__(self):
         return self.title
+
+    def series_number(self):
+        return self.core.series_number
