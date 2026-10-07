@@ -17,7 +17,7 @@ class SeriesCore(models.Model):
 class SeriesVersion(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    language = models.CharField(max_length=2, choices=LanguageCodes)
+    language = models.CharField(max_length=2, choices=LanguageCodes.choices)
     original_language = models.BooleanField(_("Original language"))
     core = models.ForeignKey(SeriesCore, related_name="versions", on_delete=models.CASCADE)
 

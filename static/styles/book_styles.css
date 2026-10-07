@@ -1,13 +1,15 @@
 .book_container {
-    display: inline-flex;
-    flex-direction: column;
-    width: 350px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    display: inline-block;
+    padding: 0;
+
+    transition: transform ease-in-out 0.5s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 
     img {
         max-width: 200px;
-        margin-top: 1rem;
     }
+
 }

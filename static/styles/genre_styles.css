@@ -1,0 +1,7 @@
+.genre {
+    font-variant: small-caps;
+    padding: 0.1rem;
+    margin: 0.1rem;
+    border-radius: 0.4rem;
+    background-color: rgba(255, 150, 150, 0.5);
+}

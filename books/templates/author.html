@@ -1,16 +1,15 @@
-{% extends 'shared/base.html' %}
+{% extends "shared/base.html" %}
 {% load static %}
-{% load i18n %}
-
-{% block title %}{% translate "Books" %}{% endblock title %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static "styles/book_styles.css" %}"/>
 {% endblock head%}
 
 {% block content %}
-{% for book in books %}
-    <a class="book_container" href="{% url "book" book.pk %}">
+<h1>{{ author.name }}</h1>
+
+{% for book in author.books.all %}
+    <a class="book_container" href="{% url "book" book.original_version.pk %}">
         <img src="{{ book.cover_image }}"/>
     </a>
 {% endfor %}
