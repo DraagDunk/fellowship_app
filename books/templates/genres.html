@@ -1,0 +1,14 @@
+{% extends "shared/base.html" %}
+{% load i18n static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/genre_styles.css" %}"/>
+{% endblock head%}
+
+{% block content %}
+    <h1>{% trans "Genres" %}</h1>
+
+    {% for genre in genres %}
+        <a class="genre" href="{% url "genre" genre.pk %}">{{ genre }}</a>
+    {% endfor %}
+{% endblock content %}

@@ -6,9 +6,9 @@
 {% endblock head%}
 
 {% block content %}
-    <h1>{{ author.name }}</h1>
+    <h1>{{ genre.name }}</h1>
 
-    {% for book in author.books.all %}
+    {% for book in genre.books.all %}
         <a class="book_container" href="{% url "book" book.original_version.pk %}">
             <img src="{{ book.cover_image }}"/>
         </a>

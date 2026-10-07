@@ -6,10 +6,12 @@
 {% endblock head%}
 
 {% block content %}
-    <h1>{{ author.name }}</h1>
+    <h1>{{ series.name }}</h1>
 
-    {% for book in author.books.all %}
-        <a class="book_container" href="{% url "book" book.original_version.pk %}">
+    <p>{{ series.description }}</p>
+
+    {% for book in series.books.all %}
+        <a class="book_container" href="{% url "book" book.pk %}">
             <img src="{{ book.cover_image }}"/>
         </a>
     {% endfor %}

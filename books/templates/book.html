@@ -3,6 +3,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static "styles/genre_styles.css" %}"/>
+<link rel="stylesheet" href="{% static "styles/book_styles.css" %}"/>
 {% endblock head%}
 
 {% block content %}
@@ -12,7 +13,7 @@
     {% endif %}
 
     {% if book.series %}
-        {{ book.series }} {{ book.series_number }}
+        <a href="{% url "series" book.series.pk %}">{{ book.series }} {{ book.series_number }}</a>
     {% endif %}
 
     <p>{% trans "By" %} {% for author in book.author.all %}<a href="{% url "author" author.pk %}">{{ author }}</a>{% endfor %}</p>
@@ -20,7 +21,7 @@
     <img src="{{ book.cover_image }}" width="300px"/>
 
     <div>
-        {% trans "Genres" %}: {% for genre in book.genres.all %}<span class="genre">{{ genre }}</span> {% endfor %}
+        {% trans "Genres" %}: {% for genre in book.genres.all %}<a class="genre" href="{% url "genre" genre.pk %}">{{ genre }}</a> {% endfor %}
     </div>
 
     <p>

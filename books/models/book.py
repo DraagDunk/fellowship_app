@@ -30,8 +30,8 @@ class BookCore(models.Model):
 class BookVersion(models.Model):
     title = models.CharField(_("Title"), max_length=100)
     subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
-    description = models.TextField(_("Description"))
-    series = models.ForeignKey(SeriesVersion, verbose_name=_("Series"), on_delete=models.SET_NULL, null=True, blank=True)
+    description = models.TextField(_("Description"), blank=True)
+    series = models.ForeignKey(SeriesVersion, verbose_name=_("Series"), on_delete=models.SET_NULL, null=True, blank=True, related_name="books")
     cover_image = models.URLField(_("Cover image URL"), max_length=500)
     information_link = models.URLField(_("Information URL"), max_length=500)
     seller_link = models.URLField(_("Seller URL"), max_length=500)
