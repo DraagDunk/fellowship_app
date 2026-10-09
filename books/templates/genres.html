@@ -6,7 +6,7 @@
 {% endblock head%}
 
 {% block content %}
-    <h1>{% trans "Genres" %}</h1>
+    <h1>{% translate "Genres" %}</h1>
 
     {% for genre in genres %}
         <a class="genre" href="{% url "genre" genre.pk %}">{{ genre }}</a>
