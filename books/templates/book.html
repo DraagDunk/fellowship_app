@@ -1,0 +1,47 @@
+{% extends "shared/base.html" %}
+{% load i18n static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "styles/genre_styles.css" %}"/>
+<link rel="stylesheet" href="{% static "styles/book_styles.css" %}"/>
+{% endblock head%}
+
+{% block content %}
+    <h1>{{ book.title }}</h1>
+    {% if book.subtitle %}
+        <h2>{{ book.subtitle }}</h2>
+    {% endif %}
+
+    {% if book.series %}
+        <a href="{% url "series" book.series.pk %}">{{ book.series }} {{ book.series_number }}</a>
+    {% endif %}
+
+    <p>{% translate "By" %} {% for author in book.author.all %}<a href="{% url "author" author.pk %}">{{ author }}</a>{% endfor %}</p>
+
+    <img src="{{ book.cover_image }}" width="300px"/>
+
+    <div>
+        {% translate "Genres" %}: {% for genre in book.genres.all %}<a class="genre" href="{% url "genre" genre.pk %}">{{ genre }}</a> {% endfor %}
+    </div>
+
+    <p>
+        {{ book.description }}
+    </p>
+
+    <div class="links">
+        <a href="{{ book.information_link }}">{% translate "More info" %}</a>
+        <a href="{{ book.seller_link }}">{% translate "Buy" %}</a>
+        <a href="{{ book.library_link }}">{% translate "Library" %}</a>
+    </div>
+
+    {% if book.other_versions.all %}
+    <div>
+        <h2>Other versions</h2>
+        {% for version in book.other_versions.all %}
+            <a class="book_container" href="{% url "book" version.pk %}">
+                <img src="{{ version.cover_image }}"/>
+            </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock content %}

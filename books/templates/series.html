@@ -1,0 +1,18 @@
+{% extends "shared/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/book_styles.css" %}"/>
+{% endblock head%}
+
+{% block content %}
+    <h1>{{ series.name }}</h1>
+
+    <p>{{ series.description }}</p>
+
+    {% for book in series.books.all %}
+        <a class="book_container" href="{% url "book" book.pk %}">
+            <img src="{{ book.cover_image }}"/>
+        </a>
+    {% endfor %}
+{% endblock content %}

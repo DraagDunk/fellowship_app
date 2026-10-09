@@ -88,6 +88,158 @@
         }
     },
     {
+        "model": "books.author",
+        "pk": 1,
+        "fields": {
+            "name": "J. R. R. Tolkien"
+        }
+    },
+    {
+        "model": "books.genre",
+        "pk": 1,
+        "fields": {
+            "name": "Fantasy"
+        }
+    },
+    {
+        "model": "books.genre",
+        "pk": 2,
+        "fields": {
+            "name": "Romance"
+        }
+    },
+    {
+        "model": "books.genre",
+        "pk": 3,
+        "fields": {
+            "name": "Science Fiction"
+        }
+    },
+    {
+        "model": "books.genre",
+        "pk": 4,
+        "fields": {
+            "name": "Adventure"
+        }
+    },
+    {
+        "model": "books.genre",
+        "pk": 5,
+        "fields": {
+            "name": "Horror"
+        }
+    },
+    {
+        "model": "books.seriescore",
+        "pk": 1,
+        "fields": {
+            "author": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "books.seriesversion",
+        "pk": 1,
+        "fields": {
+            "name": "The Lord of the Rings",
+            "description": "Pretty good series.",
+            "language": "en",
+            "original_language": true,
+            "core": 1
+        }
+    },
+    {
+        "model": "books.bookcore",
+        "pk": 1,
+        "fields": {
+            "series_number": 1,
+            "author": [
+                1
+            ],
+            "genres": [
+                1,
+                4
+            ]
+        }
+    },
+    {
+        "model": "books.bookcore",
+        "pk": 2,
+        "fields": {
+            "series_number": 2,
+            "author": [
+                1
+            ],
+            "genres": [
+                1,
+                4
+            ]
+        }
+    },
+    {
+        "model": "books.bookcore",
+        "pk": 3,
+        "fields": {
+            "series_number": 3,
+            "author": [
+                1
+            ],
+            "genres": [
+                1,
+                4
+            ]
+        }
+    },
+    {
+        "model": "books.bookversion",
+        "pk": 1,
+        "fields": {
+            "title": "The Fellowship of the Ring",
+            "subtitle": "",
+            "series": 1,
+            "cover_image": "https://p.kagi.com/proxy/71Ep7UNeTtL._AC_UF1000,1000_QL80_.jpg?c=CXPfL3-FqybbvZNQU82_BGSCqYZMz5YT_CgNKn5TDDV9XOODgZuMG6HbQjpLXcqqcApPgtYK4qPdJos048cx8RiGHOv4uFGBnE9HzjutGPlI4a_fBP20XcpyMhKDCyDI",
+            "information_link": "https://www.goodreads.com/book/show/34.The_Fellowship_of_the_Ring",
+            "seller_link": "https://www.saxo.com/dk/the-fellowship-of-the-ring_jrr-tolkien_paperback_9780547928210",
+            "library_link": "https://bibliotek.dk/materiale/the-fellowship-of-the-ring_j-r-r-tolkien/work-of%3A870970-basis%3A09092471?tid=_1R-v179131280047066111465",
+            "language": "en",
+            "original_language": true,
+            "core": 1
+        }
+    },
+    {
+        "model": "books.bookversion",
+        "pk": 2,
+        "fields": {
+            "title": "The Two Towers",
+            "subtitle": "",
+            "series": 1,
+            "cover_image": "https://imgcdn.saxo.com/_9780261103580",
+            "information_link": "https://www.goodreads.com/book/show/61215372-the-two-towers?ref=nav_sb_noss_l_14",
+            "seller_link": "https://www.saxo.com/dk/the-two-towers_jrr-tolkien_paperback_9780261103580",
+            "library_link": "https://bibliotek.dk/materiale/the-two-towers_j-r-r-tolkien/work-of%3A870970-basis%3A00362603?tid=cULlh179131327953965277519",
+            "language": "en",
+            "original_language": true,
+            "core": 2
+        }
+    },
+    {
+        "model": "books.bookversion",
+        "pk": 3,
+        "fields": {
+            "title": "The Return of the King",
+            "subtitle": "",
+            "series": 1,
+            "cover_image": "https://p.kagi.com/proxy/81JcdtgPBML._SL1500_.jpg?c=CXPfL3-FqybbvZNQU82_BGSCqYZMz5YT_CgNKn5TDDXeLViH20ZEQaeY3FBwtSEdfv0rb-mM0CSN8Cw1su4oyvE9E82mzhWBGSpRi4nL4jc%3D",
+            "information_link": "https://www.goodreads.com/book/show/61215384",
+            "seller_link": "https://www.saxo.com/dk/the-return-of-the-king_jrr-tolkien_hardback_9780008376147",
+            "library_link": "https://bibliotek.dk/materiale/the-return-of-the-king_j-r-r-tolkien/work-of%3A870970-basis%3A08734844?tid=Q99sG179131422907573212133",
+            "language": "en",
+            "original_language": true,
+            "core": 3
+        }
+    },
+    {
         "model": "admin.logentry",
         "pk": 1,
         "fields": {
@@ -452,6 +604,188 @@
         }
     },
     {
+        "model": "admin.logentry",
+        "pk": 29,
+        "fields": {
+            "action_time": "2026-10-06T19:13:45.590Z",
+            "user": 1,
+            "content_type": 3,
+            "object_id": "1",
+            "object_repr": "J. R. R. Tolkien",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 30,
+        "fields": {
+            "action_time": "2026-10-06T19:13:54.004Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "1",
+            "object_repr": "Fantasy",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 31,
+        "fields": {
+            "action_time": "2026-10-06T19:13:58.080Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "2",
+            "object_repr": "Romance",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 32,
+        "fields": {
+            "action_time": "2026-10-06T19:14:02.588Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "3",
+            "object_repr": "Science Fiction",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 33,
+        "fields": {
+            "action_time": "2026-10-06T19:14:05.763Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "4",
+            "object_repr": "Adventure",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 34,
+        "fields": {
+            "action_time": "2026-10-06T19:14:09.091Z",
+            "user": 1,
+            "content_type": 6,
+            "object_id": "5",
+            "object_repr": "Horror",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 35,
+        "fields": {
+            "action_time": "2026-10-06T19:14:16.564Z",
+            "user": 1,
+            "content_type": 7,
+            "object_id": "1",
+            "object_repr": "Unknown series (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 36,
+        "fields": {
+            "action_time": "2026-10-06T19:14:33.142Z",
+            "user": 1,
+            "content_type": 8,
+            "object_id": "1",
+            "object_repr": "The Lord of the Rings",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 37,
+        "fields": {
+            "action_time": "2026-10-06T19:15:21.531Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "1",
+            "object_repr": "Unknown book (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 38,
+        "fields": {
+            "action_time": "2026-10-06T19:15:25.283Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "2",
+            "object_repr": "Unknown book (2)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 39,
+        "fields": {
+            "action_time": "2026-10-06T19:15:29.528Z",
+            "user": 1,
+            "content_type": 4,
+            "object_id": "3",
+            "object_repr": "Unknown book (3)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 40,
+        "fields": {
+            "action_time": "2026-10-06T19:15:57.904Z",
+            "user": 1,
+            "content_type": 5,
+            "object_id": "1",
+            "object_repr": "The Fellowship of the Ring",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 41,
+        "fields": {
+            "action_time": "2026-10-06T19:16:17.098Z",
+            "user": 1,
+            "content_type": 5,
+            "object_id": "2",
+            "object_repr": "The Two Towers",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 42,
+        "fields": {
+            "action_time": "2026-10-06T19:17:43.422Z",
+            "user": 1,
+            "content_type": 5,
+            "object_id": "3",
+            "object_repr": "The Return of the King",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
         "model": "auth.permission",
         "pk": 1,
         "fields": {
@@ -740,11 +1074,227 @@
         }
     },
     {
+        "model": "auth.permission",
+        "pk": 33,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 9,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 34,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 9,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 35,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 9,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 36,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 9,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 37,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 11,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 38,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 11,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 39,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 11,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 40,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 11,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 41,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 10,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 42,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 10,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 43,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 10,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 44,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 10,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 45,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 12,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 46,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 12,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 47,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 12,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 48,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 12,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 49,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 13,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 50,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 13,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 51,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 13,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 52,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 13,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 53,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 14,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 54,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 14,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 55,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 14,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 56,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 14,
+            "codename": "view_session"
+        }
+    },
+    {
         "model": "auth.user",
         "pk": 1,
         "fields": {
             "password": "pbkdf2_sha256$1200000$fU7QkLlAcM2myDRpUtfodR$//iUePVJ4DxN/0fs1uEPC5NQV8FLTYDDNwc3ef9pz3g=",
-            "last_login": "2026-05-08T19:43:17Z",
+            "last_login": "2026-10-06T19:13:30.937Z",
             "is_superuser": true,
             "username": "gandalf",
             "first_name": "Gandalf",
@@ -921,13 +1471,61 @@
         "model": "contenttypes.contenttype",
         "pk": 3,
         "fields": {
+            "app_label": "books",
+            "model": "author"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "books",
+            "model": "bookcore"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "books",
+            "model": "bookversion"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "books",
+            "model": "genre"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "books",
+            "model": "seriescore"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "books",
+            "model": "seriesversion"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
             "app_label": "admin",
             "model": "logentry"
         }
     },
     {
         "model": "contenttypes.contenttype",
-        "pk": 4,
+        "pk": 10,
         "fields": {
             "app_label": "auth",
             "model": "group"
@@ -935,7 +1533,7 @@
     },
     {
         "model": "contenttypes.contenttype",
-        "pk": 5,
+        "pk": 11,
         "fields": {
             "app_label": "auth",
             "model": "permission"
@@ -943,7 +1541,7 @@
     },
     {
         "model": "contenttypes.contenttype",
-        "pk": 6,
+        "pk": 12,
         "fields": {
             "app_label": "auth",
             "model": "user"
@@ -951,7 +1549,7 @@
     },
     {
         "model": "contenttypes.contenttype",
-        "pk": 7,
+        "pk": 13,
         "fields": {
             "app_label": "contenttypes",
             "model": "contenttype"
@@ -959,7 +1557,7 @@
     },
     {
         "model": "contenttypes.contenttype",
-        "pk": 8,
+        "pk": 14,
         "fields": {
             "app_label": "sessions",
             "model": "session"
@@ -967,10 +1565,10 @@
     },
     {
         "model": "sessions.session",
-        "pk": "zdghol8g17k21r6ekr1jh7u8vijtrwd1",
+        "pk": "aog3qdutmbv2w0uff3c2rvfc3n59eikg",
         "fields": {
-            "session_data": ".eJxVjEEOwiAQRe_C2pAAA4hL956BzDAgVQNJaVfGu9smXej2vff_W0RclxrXkec4sbgIJU6_jDA9c9sFP7Ddu0y9LfNEck_kYYe8dc6v69H-HVQcdVt7BUxQNGHIYNEXw6gDFLMBDsCIxoUEno2mM3ttIQUgx-idsqxAfL78nTg4:1wLR6T:gs6kRS0diD4Y6mh7USPVtfj2AsgMsnEeU_E8GPh3fdg",
-            "expire_date": "2026-05-22T19:43:17.004Z"
+            "session_data": ".eJxVjEEOwiAQRe_C2pAAA4hL956BzDAgVQNJaVfGu9smXej2vff_W0RclxrXkec4sbgIJU6_jDA9c9sFP7Ddu0y9LfNEck_kYYe8dc6v69H-HVQcdVt7BUxQNGHIYNEXw6gDFLMBDsCIxoUEno2mM3ttIQUgx-idsqxAfL78nTg4:1xEAbS:uGGfdddS_0QnQseRLjy0ct90PV7qcC6jmgEyGt6Hyfc",
+            "expire_date": "2026-10-20T19:13:30.938Z"
         }
     }
 ]
