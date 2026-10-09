@@ -34,6 +34,14 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+#### Translations
+
+Compiling translations at runtime is a pain in the ass, so please do this yourself:
+
+```bash
+python3 manage.py compilemessages
+```
+
 ## Installing new dependencies
 
 If you are running in a virtual environment (you should be), then you can install new dependencies with
