@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-09 18:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: books/models/book.py:11
+msgid "Author"
+msgstr "Forfatter"
+
+#: books/models/book.py:12 books/templates/book.html:24
+#: books/templates/genres.html:9
+msgid "Genres"
+msgstr "Genrer"
+
+#: books/models/book.py:31
+msgid "Title"
+msgstr "Titel"
+
+#: books/models/book.py:32
+msgid "Subtitle"
+msgstr "Undertitel"
+
+#: books/models/book.py:33 books/models/series.py:19
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: books/models/book.py:34
+msgid "Series"
+msgstr "Serie"
+
+#: books/models/book.py:35
+msgid "Cover image URL"
+msgstr "Forsidebillede-URL"
+
+#: books/models/book.py:36
+msgid "Information URL"
+msgstr "Informations-URL"
+
+#: books/models/book.py:37
+msgid "Seller URL"
+msgstr "Salgs-URL"
+
+#: books/models/book.py:38
+msgid "Library URL"
+msgstr "Biblioteks-URL"
+
+#: books/models/book.py:39 books/models/series.py:20
+msgid "Language"
+msgstr "Sprog"
+
+#: books/models/book.py:40 books/models/series.py:21
+msgid "Original language"
+msgstr "Originalsprog"
+
+#: books/models/book.py:41 books/models/series.py:22
+msgid "Core"
+msgstr "Kerne"
+
+#: books/models/series.py:18
+msgid "Name"
+msgstr "Navn"
+
+#: books/models/shared.py:5
+msgid "Danish"
+msgstr "Dansk"
+
+#: books/models/shared.py:6
+msgid "English"
+msgstr "Engelsk"
+
+#: books/templates/book.html:19
+msgid "By"
+msgstr "Af"
+
+#: books/templates/book.html:32
+msgid "More info"
+msgstr "Mere info"
+
+#: books/templates/book.html:33
+msgid "Buy"
+msgstr "Køb"
+
+#: books/templates/book.html:34
+msgid "Library"
+msgstr "Bibliotek"
+
+#: books/templates/book.html:39
+msgid "Other versions"
+msgstr "Andre versioner"
+
+#: books/templates/books.html:5
+msgid "Books"
+msgstr "Bøger"

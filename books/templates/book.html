@@ -36,7 +36,7 @@
 
     {% if book.other_versions.all %}
     <div>
-        <h2>Other versions</h2>
+        <h2>{% translate "Other versions" %}</h2>
         {% for version in book.other_versions.all %}
             <a class="book_container" href="{% url "book" version.pk %}">
                 <img src="{{ version.cover_image }}"/>

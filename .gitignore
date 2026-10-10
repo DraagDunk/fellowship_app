@@ -7,3 +7,4 @@ npm-debug.log
 __pycache__
 .venv
 default_db
+*.mo
