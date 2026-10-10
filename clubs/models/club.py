@@ -21,7 +21,7 @@ class Club(models.Model):
 
 
 class ClubMembership(models.Model):
-    person = models.OneToOneField(get_user_model(), verbose_name=_("person"), on_delete=models.CASCADE, related_name="memberships")
+    person = models.OneToOneField(get_user_model(), verbose_name=_("person"), on_delete=models.CASCADE, related_name="membership")
     club = models.ForeignKey(Club, verbose_name=_("club"), on_delete=models.CASCADE, related_name="memberships")
 
     manager = models.BooleanField(verbose_name=_("manager"), default=False)
