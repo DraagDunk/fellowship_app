@@ -7,6 +7,9 @@ ENV PATH="/opt/venv/bin:$PATH" \
     UV_LINK_MODE=copy \
     UV_PROJECT_ENVIRONMENT=/opt/venv
 
+RUN apt-get update && apt-get install -y --no-install-recommends gettext \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -18,6 +21,8 @@ COPY . /app
 
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev --no-editable
+
+RUN python manage.py compilemessages
 
 # PRODUCTION STAGE
 FROM python:3.14-slim
