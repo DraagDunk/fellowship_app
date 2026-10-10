@@ -1,9 +1,41 @@
+# secrets
+.env
+.env.*
+env.example
+
+# version control / editor
 .git
 .gitignore
-.venv
-node_modules
+.nvim
+.vscode
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
 dist
+htmlcov/
+node_modules
+
+# dev-only files
+entrypoint-dev.sh
 Dockerfile*
-docker-compose.*
+docker-compose*.yml
+.dockerignore
+Dockerfile.dev.dockerignore
+data/
+README.md
+
+# extra
 staticfiles
 static
+# ignored as long as this project doesn't use typescript
+tsconfig.json
