@@ -32,12 +32,15 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
 WHITENOISE_USE_FINDERS = DEBUG
 WHITENOISE_AUTOREFRESH = DEBUG
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 # Application definition
 
 INSTALLED_APPS = [
     'clubs.apps.ClubsConfig',
     'books.apps.BooksConfig',
+    'voting.apps.VotingConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

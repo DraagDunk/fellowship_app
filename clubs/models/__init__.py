@@ -1,0 +1,1 @@
+from .club import Club, ClubMembership
