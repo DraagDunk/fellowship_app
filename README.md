@@ -2,6 +2,12 @@
 
 A simple django app in docker.
 
+## Required software for local development
+
+* Docker with docker compose ([official installation guide](https://docs.docker.com/engine/install/))
+* uv - a python pacakge and project manager ([official installation guide](https://docs.astral.sh/uv/getting-started/installation))
+  * pipx is a good solution
+
 ## How to
 
 ### Development
@@ -26,12 +32,12 @@ and then migrate after the containers are up:
 docker compose exec fellowship_app python3 manage.py migrate
 ```
 
-If you want to install python dependencies locally (for the sake of your IDE for example), start a virtual environment before installing using pip:
+#### Locally installed dependencies
+
+If you want to install python dependencies locally (for the sake of your IDE for example).
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+uv sync
 ```
 
 #### Translations
@@ -39,21 +45,68 @@ pip install -r requirements.txt
 Compiling translations at runtime is a pain in the ass, so please do this yourself:
 
 ```bash
-python3 manage.py compilemessages
+uv run manage.py compilemessages
 ```
 
 ## Installing new dependencies
+This gives you a virtual environment with the correct python version and all dependencies installed.
 
-If you are running in a virtual environment (you should be), then you can install new dependencies with
+### Installing new dependencies
+
+This project uses uv to manage dependencies and has a split in normal and dev dependencies. uv has been configured to not install or upgrade to versions of dependencies newer than 7 days. This is to help reduce the risk of being affected by a supply-chain attack. Malware scanning has also been enabled to try and detect if there are issues. This is an experimental feature and only detects packages that are already known to be malware.
+
+[Read more on managing dependencies with uv](https://docs.astral.sh/uv/concepts/projects/dependencies/)
+
+#### Install new prod dependency
+
+To install a new prod dependency you should run the following command:
 
 ```bash
-pip install <package>
+uv add <DEPENDENCY NAME>
 ```
 
-then add it to the requirements.txt file using
+Example:
 
 ```bash
-pip freeze > requirements.txt
+uv add django
+```
+
+#### Install dev dependency
+
+If a dependency is needed for development/test only then those can be installed as follows:
+
+```bash
+uv add --dev <DEPENDENCY NAME>
+```
+
+Example:
+
+```bash
+uv add --dev pytest
+```
+
+These dependencies will be installed locally and inside the dev version of the container, but not in the production container.
+
+#### Upgrade dependencies
+
+[Read more on upgrading dependencies here](https://docs.astral.sh/uv/concepts/projects/sync/#upgrading-locked-package-versions)
+
+##### Upgrade explicit dependency
+
+We have dependencies defined inside pyproject.toml. To upgrade those, you should change the version number and then run:
+
+```bash
+uv lock && uv sync
+```
+
+This will update the dependency and sync it to your machine.
+
+##### Upgrade all dependencies
+
+To upgrade all dependencies run
+
+```bash
+uv lock --upgrade && uv sync
 ```
 
 ## Environment variables
