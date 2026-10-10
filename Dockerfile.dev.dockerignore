@@ -1,0 +1,9 @@
+# Dockerfile.dev.dockerignore
+.git
+.venv/
+venv/
+node_modules
+__pycache__/
+*.py[cod]
+data/
+staticfiles
