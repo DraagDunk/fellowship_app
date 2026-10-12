@@ -8,3 +8,4 @@ __pycache__
 .venv
 default_db
 *.mo
+staticfiles/

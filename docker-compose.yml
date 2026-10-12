@@ -23,6 +23,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    user: "${UID:-1000}:${GID:-1000}" # Needed to let the container create files when project is mounted as a volume.
     container_name: app
     depends_on:
       db:

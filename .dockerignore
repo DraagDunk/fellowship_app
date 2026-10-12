@@ -16,6 +16,9 @@ __pycache__/
 .venv/
 venv/
 
+# translations
+*.mo
+
 # tool caches
 .pytest_cache/
 .mypy_cache/

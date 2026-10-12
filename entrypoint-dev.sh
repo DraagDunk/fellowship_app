@@ -3,6 +3,9 @@
 # Collect static files
 python3 manage.py collectstatic --no-input
 
+# Compile translations (only done here because we mount the project directory)
+python3 manage.py compilemessages
+
 # Run migrations
 python3 manage.py migrate
 
