@@ -1,6 +1,9 @@
-from django.views.generic import CreateView, DetailView
+from django.utils import timezone
+from django.views.generic import CreateView, DetailView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
 from ..models.voting_round import VotingRound, VotingRoundForm
 
 def is_manager(self: User):
@@ -22,6 +25,21 @@ class VotingRoundCreateView(ManagerRequiredMixin, CreateView):
     context_object_name = "round"
     template_name = "voting_round_create.html"
     form_class = VotingRoundForm
+
+class VotingRoundListView(LoginRequiredMixin, ListView):
+    model = VotingRound
+    context_object_name = "rounds"
+    template_name = "voting_round_list.html"
+
+    def get_queryset(self):
+        return super().get_queryset().filter(start_time__lte=timezone.now())
+
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        if len(self.object_list) == 1:
+            return redirect(reverse_lazy("voting_round", kwargs={"pk": self.object_list.first().pk}))
+        else:
+            return response
 
 
 class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
