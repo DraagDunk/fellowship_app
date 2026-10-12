@@ -3,4 +3,10 @@
 
 {% block content %}
     <p>{% translate "You can suggest books until" %} {{ round.suggestions_end_time | naturaltime }}</p>
+    <ul>
+        {% for suggestion in round.book_suggestions.all %}
+            <li>{{ suggestion.book }}</li>
+        {% endfor %}
+        <li><a href="{% url "book_suggestion_create" round.pk %}">{% translate "New suggestion" %}</a></li>
+    </ul>
 {% endblock content %}

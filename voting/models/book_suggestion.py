@@ -3,6 +3,7 @@ from fellowship_app.club_scope import ClubManager
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
 
 from books.models import BookCore
 from clubs.models import Club
@@ -17,6 +18,13 @@ class BookSuggestion(models.Model):
     club = models.ForeignKey(Club, verbose_name=_("Club"), on_delete=models.CASCADE, related_name="book_suggestions")
 
     objects = ClubManager()
+
+    def get_absolute_url(self):
+        return reverse_lazy("voting_round", kwargs={"pk": self.voting_round.pk})
+
+    def __str__(self):
+        return _("{book} for {vote} by {user}").format(book=self.book, vote=self.voting_round, user=self.user.get_full_name())
+
 
 class Vote(models.Model):
     book_suggestion = models.ForeignKey(BookSuggestion, verbose_name=_("Book suggestion"), on_delete=models.CASCADE, related_name="votes")

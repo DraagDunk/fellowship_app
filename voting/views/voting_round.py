@@ -22,7 +22,6 @@ class ManagerRequiredMixin(LoginRequiredMixin):
 
 class VotingRoundCreateView(ManagerRequiredMixin, CreateView):
     model = VotingRound
-    context_object_name = "round"
     template_name = "voting_round_create.html"
     form_class = VotingRoundForm
 
