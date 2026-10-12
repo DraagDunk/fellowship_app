@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-12 09:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: voting/models/book_suggestion.py:11
+msgid "Book"
+msgstr ""
+
+#: voting/models/book_suggestion.py:12
+msgid "Voting round"
+msgstr "Afstemning"
+
+#: voting/models/book_suggestion.py:13 voting/models/book_suggestion.py:17
+msgid "User"
+msgstr "Bruger"
+
+#: voting/models/book_suggestion.py:16
+msgid "Book suggestion"
+msgstr "Bogforslag"
+
+#: voting/models/voting_round.py:20
+msgid "Start time"
+msgstr "Starttid"
+
+#: voting/models/voting_round.py:21
+msgid "Suggestions end time"
+msgstr "Forslag sluttid"
+
+#: voting/models/voting_round.py:22
+msgid "Voting end time"
+msgstr "Afstemning sluttid"
+
+#: voting/models/voting_round.py:23
+msgid "Votes per user"
+msgstr "Stemmer per bruger"
+
+#: voting/models/voting_round.py:24
+msgid "Number of winners"
+msgstr "Antal vindere"
+
+#: voting/models/voting_round.py:25
+msgid "Club"
+msgstr "Klub"
+
+#: voting/templates/voting_round_create.html:9
+msgid "Create"
+msgstr "Opret"
+
+#: voting/templates/voting_round_ended.html:5
+msgid "The voting round has ended with the following result:"
+msgstr "Afstemningen er afsluttet med følgende resultat:"
+
+#: voting/templates/voting_round_not_started.html:5
+msgid "This round starts"
+msgstr "Denne runde starter"
+
+#: voting/templates/voting_round_suggestions.html:5
+msgid "You can suggest books until"
+msgstr "Du kan foreslå bøger indtil"
+
+#: voting/templates/voting_round_voting.html:5
+msgid "Voting round ends"
+msgstr "Afstemningen slutter"

@@ -1,9 +1,11 @@
 from datetime import timedelta
+from enum import Enum
 
 from django import forms
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.urls import reverse_lazy
 
 from clubs.models import Club
 
@@ -21,6 +23,39 @@ class VotingRound(models.Model):
     votes_per_user = models.PositiveIntegerField(_("Votes per user"))
     number_of_winners = models.PositiveIntegerField(_("Number of winners"))
     club = models.ForeignKey(Club, verbose_name=_("Club"), on_delete=models.CASCADE, related_name="voting_rounds")
+
+    class StateEnum(Enum):
+        NOT_STARTED = "not_started"
+        SUGGESTIONS = "suggestions"
+        VOTING = "voting"
+        ENDED = "ended"
+        UNKNOWN = "unknown"
+
+    def state(self):
+        match (self.start_time < timezone.now(),
+               self.suggestions_end_time < timezone.now(),
+               self.voting_end_time < timezone.now()):
+            case (False, _, _):
+                # Voting round has not started yet.
+                return self.StateEnum.NOT_STARTED
+            case (True, False, _):
+                # Voting round is open to suggestions
+                return self.StateEnum.SUGGESTIONS
+            case (True, True, False):
+                # Users are voting
+                return self.StateEnum.VOTING
+            case (True, True, True):
+                # Voting has ended
+                return self.StateEnum.ENDED
+            case _:
+                # What happened??
+                return self.StateEnum.UNKNOWN
+
+    def get_absolute_url(self):
+        return reverse_lazy("voting_round", kwargs={"pk": self.pk})
+    
+
+
 
 class VotingRoundForm(forms.ModelForm):
 

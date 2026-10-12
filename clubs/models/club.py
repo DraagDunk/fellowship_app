@@ -14,10 +14,10 @@ class Club(models.Model):
         return self.name
 
     def managers(self):
-        return get_user_model().objects.filter(memberships__manager=True, memberships__club=self)
+        return get_user_model().objects.filter(membership__manager=True, membership__club=self)
 
     def regular_members(self):
-        return get_user_model().objects.filter(memberships__manager=False, memberships__club=self)
+        return get_user_model().objects.filter(membership__manager=False, membership__club=self)
 
 
 class ClubMembership(models.Model):

@@ -2,7 +2,10 @@
 {% load i18n %}
 
 {% block content %}
-    {{ form.as_p }}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-    <button type="submit">{% translate "Create" %}</button>
+        <button type="submit">{% translate "Create" %}</button>
+    </form>
 {% endblock content %}

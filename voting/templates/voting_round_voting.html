@@ -1,0 +1,6 @@
+{% extends "shared/base.html" %}
+{% load humanize i18n %}
+
+{% block content %}
+    <p>{% translate "Voting round ends" %} {{ round.voting_end_time | naturaltime }}
+{% endblock content %}
