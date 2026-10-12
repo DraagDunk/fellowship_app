@@ -24,6 +24,7 @@ class VotingRound(models.Model):
     suggestions_end_time = models.DateTimeField(_("Suggestions end time"), auto_now=False, auto_now_add=False, default=in_one_week)
     voting_end_time = models.DateTimeField(_("Voting end time"), auto_now=False, auto_now_add=False, default=in_two_weeks)
     votes_per_user = models.PositiveIntegerField(_("Votes per user"))
+    suggestions_per_user = models.PositiveIntegerField(_("Suggestions per user"))
     number_of_winners = models.PositiveIntegerField(_("Number of winners"))
     club = models.ForeignKey(Club, verbose_name=_("Club"), on_delete=models.CASCADE, related_name="voting_rounds")
 
@@ -72,7 +73,7 @@ class VotingRoundForm(forms.ModelForm):
 
     class Meta:
         model = VotingRound
-        fields = ("start_time", "suggestions_end_time", "voting_end_time", "votes_per_user", "number_of_winners", "club")
+        fields = ("start_time", "suggestions_end_time", "voting_end_time", "suggestions_per_user", "votes_per_user", "number_of_winners", "club")
         widgets = {
             "start_time": forms.DateTimeInput(
                 attrs={"type": "datetime-local"},

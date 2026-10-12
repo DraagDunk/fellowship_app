@@ -15,8 +15,12 @@ def is_manager(self: User):
 def has_voted(self: User, voting_round: VotingRound):
     return self.votes.filter(book_suggestion__voting_round=voting_round).exists()
 
+def can_still_suggest(self: User, voting_round: VotingRound):
+    return self.book_suggestions.filter(voting_round=voting_round).count() < voting_round.suggestions_per_user
+
 User.add_to_class('is_manager', is_manager)
 User.add_to_class('has_voted', has_voted)
+User.add_to_class('can_still_suggest', can_still_suggest)
 
 class ManagerRequiredMixin(LoginRequiredMixin):
 
@@ -66,6 +70,7 @@ class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
         context["has_voted"] = user_has_voted
         if user_has_voted:
             context["voted_suggestions"] = BookSuggestion.objects.filter(votes__user=self.request.user).values_list("pk", flat=True)
+        context["can_still_suggest"] = self.request.user.can_still_suggest(self.object)
         return context
 
     def get_template_names(self):

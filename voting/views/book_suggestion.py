@@ -1,6 +1,8 @@
 from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
+from django.core.exceptions import PermissionDenied
+from django.utils.translation import gettext_lazy as _
 
 from ..models.book_suggestion import BookSuggestion
 from ..models.voting_round import VotingRound
@@ -12,6 +14,12 @@ class BookSuggestionCreateView(LoginRequiredMixin, CreateView):
     template_name = "book_suggestion_create.html"
 
     fields = ("book",)
+
+    def get(self, request, *args, **kwargs):
+        if request.user.book_suggestions.filter(voting_round=self.voting_round).count() < self.voting_round.suggestions_per_user:
+            return super().get(request, *args, **kwargs)
+        else:
+            raise PermissionDenied(_("User has already suggested {n} books.").format(n=self.voting_round.suggestions_per_user))
 
     def dispatch(self, request, *args, **kwargs):
         self.voting_round = get_object_or_404(VotingRound, pk=self.kwargs["round_pk"])
