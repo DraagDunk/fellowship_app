@@ -4,12 +4,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 from ..models.voting_round import VotingRound, VotingRoundForm
+from ..models.book_suggestion import BookSuggestion, Vote
 
 def is_manager(self: User):
     return self.membership.manager
 
+def has_voted(self: User, voting_round: VotingRound):
+    return self.votes.filter(book_suggestion__voting_round=voting_round).exists()
+
 User.add_to_class('is_manager', is_manager)
+User.add_to_class('has_voted', has_voted)
 
 class ManagerRequiredMixin(LoginRequiredMixin):
 
@@ -55,10 +62,30 @@ class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["manager"] = False
+        user_has_voted = self.request.user.has_voted(self.object)
+        context["has_voted"] = user_has_voted
+        if user_has_voted:
+            context["voted_suggestions"] = BookSuggestion.objects.filter(votes__user=self.request.user).values_list("pk", flat=True)
         return context
 
     def get_template_names(self):
         return [self.template_map[self.object.state()]]
+
+    def post(self, request, *args, **kwargs):
+        book_ids = [int(book_id) for book_id in request.POST.getlist("books", [])]
+        print("books_ids:", book_ids)
+        voting_round = self.get_object()
+        if request.user.has_voted(voting_round):
+            raise ValidationError(_("User has already voted!"))
+        elif len(book_ids) != voting_round.votes_per_user:
+            raise ValidationError(_("User has voted for too many or too few books!"))
+        else:
+            for book_id in book_ids:
+                suggestion_obj = BookSuggestion.objects.get(pk=book_id)
+                Vote.objects.create(user=request.user, book_suggestion=suggestion_obj)
+
+        return self.get(request, *args, **kwargs)
+
 
 
 class VotingRoundManagerDetailView(ManagerRequiredMixin, VotingRoundUserDetailView):

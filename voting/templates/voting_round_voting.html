@@ -2,5 +2,28 @@
 {% load humanize i18n %}
 
 {% block content %}
-    <p>{% translate "Voting round ends" %} {{ round.voting_end_time | naturaltime }}
+    <p>{% translate "Voting round ends" %} {{ round.voting_end_time | naturaltime }}</p>
+
+    {% if has_voted %}
+        {% translate "Thank you for voting!" %}
+        <ul>
+            {% for suggestion in round.book_suggestions.all %}
+                <li>
+                    {{ suggestion.book }}
+                    {% if suggestion.pk in voted_suggestions %}
+                        {% translate "<- You voted for this" %}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <form method="post">
+            {% csrf_token %}
+            {% for suggestion in round.book_suggestions.all %}
+                <input type="checkbox" value="{{ suggestion.pk }}" name="books" id="checkbox__{{ suggestion.pk }}"/>
+                <label for="checkbox__{{ suggestion.pk }}">{{ suggestion.book }}</label>
+            {% endfor %}
+            <button type="submit">{% translate "Vote" %}</button>
+        </form>
+    {% endif %}
 {% endblock content %}

@@ -34,5 +34,3 @@ class BookSuggestion(models.Model):
 class Vote(models.Model):
     book_suggestion = models.ForeignKey(BookSuggestion, verbose_name=_("Book suggestion"), on_delete=models.CASCADE, related_name="votes")
     user = models.ForeignKey(User, verbose_name=_("User"), on_delete=models.CASCADE, related_name="votes")
-
-    objects = ClubManager()
