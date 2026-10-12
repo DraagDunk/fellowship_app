@@ -25,6 +25,11 @@ class BookSuggestion(models.Model):
     def __str__(self):
         return _("{book} for {vote} by {user}").format(book=self.book, vote=self.voting_round, user=self.user.get_full_name())
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["book", "voting_round"], name="unique_book_per_voting_round")
+        ]
+
 
 class Vote(models.Model):
     book_suggestion = models.ForeignKey(BookSuggestion, verbose_name=_("Book suggestion"), on_delete=models.CASCADE, related_name="votes")
