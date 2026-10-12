@@ -7,6 +7,8 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.urls import reverse_lazy
 
+from fellowship_app.club_scope import ClubManager
+
 from clubs.models import Club
 
 
@@ -23,6 +25,8 @@ class VotingRound(models.Model):
     votes_per_user = models.PositiveIntegerField(_("Votes per user"))
     number_of_winners = models.PositiveIntegerField(_("Number of winners"))
     club = models.ForeignKey(Club, verbose_name=_("Club"), on_delete=models.CASCADE, related_name="voting_rounds")
+
+    objects = ClubManager()
 
     class StateEnum(Enum):
         NOT_STARTED = "not_started"
