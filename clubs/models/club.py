@@ -1,5 +1,7 @@
 from uuid import uuid4
 
+from fellowship_app.club_scope import ClubManager
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
@@ -26,3 +28,4 @@ class ClubMembership(models.Model):
 
     manager = models.BooleanField(verbose_name=_("manager"), default=False)
 
+    objects = ClubManager()
