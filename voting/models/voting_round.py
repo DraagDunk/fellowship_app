@@ -6,6 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.urls import reverse_lazy
+from django.db.models import Count
 
 from fellowship_app.club_scope import ClubManager
 
@@ -54,6 +55,9 @@ class VotingRound(models.Model):
             case _:
                 # What happened??
                 return self.StateEnum.UNKNOWN
+
+    def result(self):
+        return self.book_suggestions.annotate(number_of_votes=Count("votes")).order_by("-number_of_votes")
 
     def get_absolute_url(self):
         return reverse_lazy("voting_round", kwargs={"pk": self.pk})
