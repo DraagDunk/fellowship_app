@@ -1,0 +1,6 @@
+{% extends "shared/base.html" %}
+{% load humanize i18n %}
+
+{% block content %}
+    <p>{% translate "This round starts" %} {{ round.start_time | naturaltime }}</p>
+{% endblock content %}

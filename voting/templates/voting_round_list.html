@@ -1,0 +1,9 @@
+{% extends "shared/base.html" %}
+
+{% block content %}
+    <ul>
+        {% for round in rounds %}
+            <li><a href="{% url "voting_round" round.pk %}">{{ round }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

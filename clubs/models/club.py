@@ -1,5 +1,7 @@
 from uuid import uuid4
 
+from fellowship_app.club_scope import ClubManager
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
@@ -14,15 +16,16 @@ class Club(models.Model):
         return self.name
 
     def managers(self):
-        return get_user_model().objects.filter(memberships__manager=True, memberships__club=self)
+        return get_user_model().objects.filter(membership__manager=True, membership__club=self)
 
     def regular_members(self):
-        return get_user_model().objects.filter(memberships__manager=False, memberships__club=self)
+        return get_user_model().objects.filter(membership__manager=False, membership__club=self)
 
 
 class ClubMembership(models.Model):
-    person = models.OneToOneField(get_user_model(), verbose_name=_("person"), on_delete=models.CASCADE, related_name="memberships")
+    person = models.OneToOneField(get_user_model(), verbose_name=_("person"), on_delete=models.CASCADE, related_name="membership")
     club = models.ForeignKey(Club, verbose_name=_("club"), on_delete=models.CASCADE, related_name="memberships")
 
     manager = models.BooleanField(verbose_name=_("manager"), default=False)
 
+    objects = ClubManager()
