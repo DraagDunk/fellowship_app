@@ -1,15 +1,14 @@
 .book_container {
-    display: inline-block;
-    padding: 0;
+  display: inline-block;
+  padding: 0;
 
-    transition: transform ease-in-out 0.5s;
+  transition: transform ease-in-out 0.5s;
 
-    &:hover {
-        transform: scale(1.05);
-    }
+  &:hover {
+    transform: scale(1.05);
+  }
 
-    img {
-        max-width: 200px;
-    }
-
+  img {
+    max-width: 200px;
+  }
 }
