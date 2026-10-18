@@ -24,7 +24,7 @@ class BookSuggestionCreateView(LoginRequiredMixin, CreateView):
     def dispatch(self, request, *args, **kwargs):
         self.voting_round = get_object_or_404(VotingRound, pk=self.kwargs["round_pk"])
         return super().dispatch(request, *args, **kwargs)
-    
+
     def form_valid(self, form):
         form.instance.voting_round = self.voting_round
         form.instance.user = self.request.user

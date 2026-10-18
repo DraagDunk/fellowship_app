@@ -13,5 +13,3 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context["club"] = self.get_queryset()
         return context
-    
-    

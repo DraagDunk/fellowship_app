@@ -99,4 +99,3 @@ class VotingRoundManagerDetailView(ManagerRequiredMixin, VotingRoundUserDetailVi
         context = super().get_context_data(**kwargs)
         context["manager"] = True
         return context
-    

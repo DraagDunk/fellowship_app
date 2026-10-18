@@ -25,7 +25,7 @@ urlpatterns = [
     path("books/", include("books.urls")),
     path("voting/", include("voting.urls")),
     path("", include("clubs.urls"))
-] 
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

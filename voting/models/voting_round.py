@@ -65,7 +65,7 @@ class VotingRound(models.Model):
 
     def __str__(self):
         return _("{club} voting round {start_time}").format(club=self.club, start_time=self.start_time)
-    
+
 
 
 
