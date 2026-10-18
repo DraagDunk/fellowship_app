@@ -1,7 +1,8 @@
-from django.views.generic import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import DetailView
 
 from ..models import Author
+
 
 class AuthorDetailView(LoginRequiredMixin, DetailView):
     template_name = "author.html"

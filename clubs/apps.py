@@ -3,5 +3,5 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ClubsConfig(AppConfig):
-    name = 'clubs'
+    name = "clubs"
     verbose_name = _("clubs")

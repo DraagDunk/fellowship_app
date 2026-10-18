@@ -27,3 +27,6 @@ dev = [
 # We don't install the newest version to help reduce risk of supply-chain attacks
 exclude-newer = "7 days"
 audit.malware-check = true
+
+[tool.ruff.lint]
+extend-ignore = ["RUF012"]
