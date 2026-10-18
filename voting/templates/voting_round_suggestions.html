@@ -1,6 +1,5 @@
 {% extends "shared/base.html" %}
 {% load humanize i18n %}
-
 {% block content %}
     <p>{% translate "You can suggest books until" %} {{ round.suggestions_end_time | naturaltime }}</p>
     <ul>
@@ -11,7 +10,6 @@
             <li><a href="{% url "book_suggestion_create" round.pk %}">{% translate "New suggestion" %}</a></li>
         {% endif %}
     </ul>
-
     {% if not can_still_suggest %}
         <p>
             {% blocktranslate with n=round.suggestions_per_user %}
