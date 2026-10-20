@@ -10,7 +10,10 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(BookCore)
 class BookCoreAdmin(admin.ModelAdmin):
-    list_display = ("pk", "series_number")
+    list_display = ("original_version", "series_number")
+
+    def original_version(self, obj: BookCore):
+        return obj.original_version
 
 
 @admin.register(BookVersion)

@@ -1,9 +1,11 @@
+from django import forms
 from django.db import models
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from .author import Author
 from .genre import Genre
-from .series import SeriesVersion
+from .series import SeriesCore, SeriesVersion
 from .shared import LanguageCodes
 
 
@@ -56,7 +58,11 @@ class BookVersion(models.Model):
         verbose_name=_("Core"),
         on_delete=models.CASCADE,
         related_name="versions",
+        blank=True,
     )
+
+    def get_absolute_url(self):
+        return reverse_lazy("book", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.title
@@ -76,3 +82,79 @@ class BookVersion(models.Model):
     @property
     def other_versions(self):
         return self.core.versions.exclude(pk=self.pk)
+
+
+class BookVersionForm(forms.ModelForm):
+    original_title = forms.CharField(
+        required=False, label=_("Original title"), widget=forms.TextInput()
+    )
+
+    series_name = forms.CharField(
+        required=False, label=_("Series name"), widget=forms.TextInput()
+    )
+
+    series_number = forms.IntegerField(
+        required=False,
+        label=_("Series number"),
+        widget=forms.NumberInput(attrs={"min": "1"}),
+    )
+
+    author = forms.CharField(required=True, label=_("Author"), widget=forms.TextInput())
+
+    class Meta:
+        model = BookVersion
+        fields = (
+            "title",
+            "subtitle",
+            "description",
+            "series",
+            "cover_image",
+            "information_link",
+            "seller_link",
+            "library_link",
+            "language",
+            "original_language",
+            "core",
+        )
+
+    def clean(self):
+        cleaned = super().clean()
+
+        # Get the authors
+        author_names = cleaned.get("author").strip().split(",")
+        authors = []
+        for author_name in author_names:
+            authors.append(Author.objects.get_or_create(name=author_name)[0])
+
+        # Get the core from the original title
+        if cleaned.get("original_language"):
+            original_title = cleaned.get("title")
+        else:
+            original_title = cleaned.get("original_title")
+        core, created = BookCore.objects.get_or_create(
+            versions__title=original_title,
+            defaults={"series_number": cleaned.get("series_number")},
+        )
+        if created:
+            core.author.set(authors)
+        cleaned["core"] = core
+
+        # Get the series from the series name
+        if series_name := cleaned.get("series_name"):
+            series, created = SeriesVersion.objects.get_or_create(
+                name=series_name,
+                language=cleaned.get("language"),
+                original_language=cleaned.get("original_language"),
+            )
+            if created:
+                core = SeriesCore.objects.create()
+                core.author.set(authors)
+                series.core = core
+            cleaned["series"] = series
+
+        cleaned.pop("author")
+        cleaned.pop("original_title")
+        cleaned.pop("series_name")
+        cleaned.pop("series_number")
+
+        return cleaned
