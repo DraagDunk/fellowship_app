@@ -20,6 +20,8 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "pytest==9.1.1",
+    "pytest-django==4.14.0",
     "pre-commit==4.6.2",
 ]
 
@@ -27,6 +29,10 @@ dev = [
 # We don't install the newest version to help reduce risk of supply-chain attacks
 exclude-newer = "7 days"
 audit.malware-check = true
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "fellowship_app.settings"
+python_files = ["test_*.py", "*_tests.py"]
 
 [tool.ruff.lint]
 extend-ignore = ["RUF012"]

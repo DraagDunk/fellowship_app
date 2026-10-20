@@ -6,6 +6,7 @@ env.example
 # version control / editor
 .git
 .gitignore
+.github/
 .nvim
 .vscode
 
@@ -40,5 +41,9 @@ README.md
 # extra
 staticfiles
 static
+
+# tests
+*/tests/
+
 # ignored as long as this project doesn't use typescript
 tsconfig.json
