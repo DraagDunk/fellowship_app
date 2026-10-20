@@ -1,10 +1,8 @@
-{% extends 'shared/base.html' %}
+{% extends "shared/base.html" %}
 {% load i18n %}
-
 {% block title %}
     {{ club.name }}
 {% endblock title %}
-
 {% block content %}
     <h1>{{ club.name }}</h1>
     <p>
@@ -12,7 +10,6 @@
             Hello and welcome to {{ name }}!
         {% endblocktranslate %}
     </p>
-
     <div>
         {% translate "Managers" %}:
         <ul>
@@ -21,7 +18,6 @@
             {% endfor %}
         </ul>
     </div>
-
     <div>
         {% translate "Members" %}:
         <ul>
@@ -30,7 +26,6 @@
             {% endfor %}
         </ul>
     </div>
-
     <a href="{% url "books" %}">{% translate "Books" %}</a>
     <a href="{% url "voting_rounds" %}">{% translate "Voting" %}</a>
 {% endblock content %}

@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from .author import Author
 from .shared import LanguageCodes
 
+
 class SeriesCore(models.Model):
     author = models.ManyToManyField(Author)
 
@@ -17,9 +18,16 @@ class SeriesCore(models.Model):
 class SeriesVersion(models.Model):
     name = models.CharField(_("Name"), max_length=100)
     description = models.TextField(_("Description"), blank=True)
-    language = models.CharField(_("Language"), max_length=2, choices=LanguageCodes.choices)
+    language = models.CharField(
+        _("Language"), max_length=2, choices=LanguageCodes.choices
+    )
     original_language = models.BooleanField(_("Original language"))
-    core = models.ForeignKey(SeriesCore, verbose_name=_("Core"), related_name="versions", on_delete=models.CASCADE)
+    core = models.ForeignKey(
+        SeriesCore,
+        verbose_name=_("Core"),
+        related_name="versions",
+        on_delete=models.CASCADE,
+    )
 
     def __str__(self):
         return self.name

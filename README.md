@@ -4,9 +4,9 @@ A simple django app in docker.
 
 ## Required software for local development
 
-* Docker with docker compose ([official installation guide](https://docs.docker.com/engine/install/))
-* uv - a python pacakge and project manager ([official installation guide](https://docs.astral.sh/uv/getting-started/installation))
-  * pipx is a good solution
+- Docker with docker compose ([official installation guide](https://docs.docker.com/engine/install/))
+- uv - a python pacakge and project manager ([official installation guide](https://docs.astral.sh/uv/getting-started/installation))
+  - pipx is a good solution
 
 ## How to
 
@@ -49,6 +49,7 @@ uv run manage.py compilemessages
 ```
 
 ## Installing new dependencies
+
 This gives you a virtual environment with the correct python version and all dependencies installed.
 
 ### Installing new dependencies
@@ -117,14 +118,14 @@ Here you can read about the environment variables used by the docker container a
 
 These environment variables are used to configure the connection to the database. While they have default values, in case no value is given to the environment variable, it is highly recommended to set these variables when used in a production setup.
 
-| Variable name | Description | Default Value |
-| -------------- | --------------- | --------------- |
-| DATABASE_USERNAME | The username for the database | postgres |
-| DATABASE_PASSWORD | The password for the database | postgres |
-| DATABASE_ENGINE | The engine for the database | sqlite3 |
-| DATABASE_NAME | The name of the database | default_db |
-| DATABASE_HOST | The host address of the database | 127.0.0.1 |
-| DATABASE_PORT | The host port of the database | 5432 |
+| Variable name     | Description                      | Default Value |
+| ----------------- | -------------------------------- | ------------- |
+| DATABASE_USERNAME | The username for the database    | postgres      |
+| DATABASE_PASSWORD | The password for the database    | postgres      |
+| DATABASE_ENGINE   | The engine for the database      | sqlite3       |
+| DATABASE_NAME     | The name of the database         | default_db    |
+| DATABASE_HOST     | The host address of the database | 127.0.0.1     |
+| DATABASE_PORT     | The host port of the database    | 5432          |
 
 ### App variables
 
@@ -132,19 +133,19 @@ These environment variables are used to configure the connection to the database
 
 These environment variables are used to configure the app container. While they have default values, in case no value is given to the environment variable, it is highly recommended to set these variables when used in a production setup.
 
-| Variable name | Description | Default Value |
-| -------------- | --------------- | --------------- |
-| DEBUG | Whether or not the project is in debug mode | 0 |
-| DJANGO_SECRET_KEY | The secret key for the django project | super duper secret |
-| DJANGO_ALLOWED_HOSTS | Comma-separated list of allowed host addresses | 127.0.0.1 |
+| Variable name        | Description                                    | Default Value      |
+| -------------------- | ---------------------------------------------- | ------------------ |
+| DEBUG                | Whether or not the project is in debug mode    | 0                  |
+| DJANGO_SECRET_KEY    | The secret key for the django project          | super duper secret |
+| DJANGO_ALLOWED_HOSTS | Comma-separated list of allowed host addresses | 127.0.0.1          |
 
 #### Dev container
 
 The dev container uses the same variables as the prod container, as well as the following.
 
-| Variable name | Description | Default Value |
-| -------------- | --------------- | --------------- |
-| DEV_TEST_DATA_PROVISION | Whether the dev container should import test data on startup. Only happens once. | 1 |
+| Variable name           | Description                                                                      | Default Value |
+| ----------------------- | -------------------------------------------------------------------------------- | ------------- |
+| DEV_TEST_DATA_PROVISION | Whether the dev container should import test data on startup. Only happens once. | 1             |
 
 ### Example .env file contents
 

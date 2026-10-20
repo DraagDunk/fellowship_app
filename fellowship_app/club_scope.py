@@ -45,9 +45,9 @@ class ClubContextMiddleware:
         club = None
         if user is not None and user.is_authenticated:
             try:
-                club = user.membership.club      # via ClubMembership
+                club = user.membership.club  # via ClubMembership
             except user.membership.RelatedObjectDoesNotExist:
-                club = None                       # user has no membership
+                club = None  # user has no membership
         _current_club.set(club)
         try:
             return self.get_response(request)
@@ -93,7 +93,6 @@ class ClubManager(models.Manager):
                 objects = ClubManager.make("team__club")
                 all_objects = models.Manager()
         """
-        manager = cls(**manager_kwargs)
 
         class _IndirectManager(cls):
             def get_queryset(self):

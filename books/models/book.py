@@ -6,10 +6,14 @@ from .genre import Genre
 from .series import SeriesVersion
 from .shared import LanguageCodes
 
-class BookCore(models.Model):
 
-    author = models.ManyToManyField(Author, verbose_name=_("Author"), related_name="books")
-    genres = models.ManyToManyField(Genre, verbose_name=_("Genres"), related_name="books")
+class BookCore(models.Model):
+    author = models.ManyToManyField(
+        Author, verbose_name=_("Author"), related_name="books"
+    )
+    genres = models.ManyToManyField(
+        Genre, verbose_name=_("Genres"), related_name="books"
+    )
     series_number = models.PositiveIntegerField()
 
     @property
@@ -31,14 +35,28 @@ class BookVersion(models.Model):
     title = models.CharField(_("Title"), max_length=100)
     subtitle = models.CharField(_("Subtitle"), max_length=100, blank=True)
     description = models.TextField(_("Description"), blank=True)
-    series = models.ForeignKey(SeriesVersion, verbose_name=_("Series"), on_delete=models.SET_NULL, null=True, blank=True, related_name="books")
+    series = models.ForeignKey(
+        SeriesVersion,
+        verbose_name=_("Series"),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="books",
+    )
     cover_image = models.URLField(_("Cover image URL"), max_length=500)
     information_link = models.URLField(_("Information URL"), max_length=500)
     seller_link = models.URLField(_("Seller URL"), max_length=500)
     library_link = models.URLField(_("Library URL"), max_length=500)
-    language = models.CharField(_("Language"), max_length=2, choices=LanguageCodes.choices)
+    language = models.CharField(
+        _("Language"), max_length=2, choices=LanguageCodes.choices
+    )
     original_language = models.BooleanField(_("Original language"))
-    core = models.ForeignKey(BookCore, verbose_name=_("Core"), on_delete=models.CASCADE, related_name="versions")
+    core = models.ForeignKey(
+        BookCore,
+        verbose_name=_("Core"),
+        on_delete=models.CASCADE,
+        related_name="versions",
+    )
 
     def __str__(self):
         return self.title
