@@ -1,6 +1,5 @@
-from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from ..models.club import Club
+from django.views.generic import TemplateView
 
 
 class HomePageView(LoginRequiredMixin, TemplateView):
@@ -13,5 +12,3 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context["club"] = self.get_queryset()
         return context
-    
-    
