@@ -1,6 +1,7 @@
 # BUILD STAGE
 FROM python:3.14-slim AS builder
-COPY --from=ghcr.io/astral-sh/uv:0.12.24 /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:0.13.4 /uv /uvx /bin/
+RUN python -m pip install --upgrade "pip>=26.2.2"
 
 ENV PATH="/opt/venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
