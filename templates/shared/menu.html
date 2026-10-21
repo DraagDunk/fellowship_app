@@ -1,0 +1,11 @@
+{% load i18n %}
+<li><a href="{% url "home_page" %}">{% translate "My club" %}</a></li>
+<li><a href="{% url "books" %}">{% translate "Books" %}</a></li>
+{% if request.user.is_authenticated %}
+    <li>
+        <form action="{% url "logout" %}" method="post">
+            {% csrf_token %}
+            <button class="link" type="submit">{% translate "Log out" %}</button>
+        </form>
+    </li>
+{% endif %}

@@ -20,7 +20,18 @@
         {% endblock head %}
     </head>
     <body>
-        {% block content %}
-        {% endblock content %}
+        <div id="page">
+            <div id="header">
+                <nav id="menu">
+                    <ul>
+                        {% include "shared/menu.html" %}
+                    </ul>
+                </nav>
+            </div>
+            {% block content %}
+            {% endblock content %}
+        </div>
+        {% block scripts %}
+        {% endblock scripts %}
     </body>
 </html>
