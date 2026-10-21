@@ -2,6 +2,7 @@ from uuid import uuid4
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from fellowship_app.club_scope import ClubManager
@@ -31,6 +32,16 @@ class Club(models.Model):
     def regular_members(self):
         return get_user_model().objects.filter(
             membership__manager=False, membership__club=self
+        )
+
+    def current_suggestion_rounds(self):
+        return self.voting_rounds.filter(
+            start_time__lte=timezone.now(), suggestions_end_time__gt=timezone.now()
+        )
+
+    def current_voting_rounds(self):
+        return self.voting_rounds.filter(
+            suggestions_end_time__lte=timezone.now(), voting_end_time__gt=timezone.now()
         )
 
 

@@ -26,6 +26,10 @@
             {% endfor %}
         </ul>
     </div>
-    <a href="{% url "books" %}">{% translate "Books" %}</a>
-    <a href="{% url "voting_rounds" %}">{% translate "Voting" %}</a>
+    {% for round in club.current_suggestion_rounds %}
+        <a href="{% url "voting_round" round.pk %}">{% translate "You can currently suggest books for a vote." %}</a>
+    {% endfor %}
+    {% for round in club.current_voting_rounds %}
+        <a href="{% url "voting_round" round.pk %}">{% translate "You can currently vote." %}</a>
+    {% endfor %}
 {% endblock content %}
