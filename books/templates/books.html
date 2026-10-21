@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="{% static "styles/book_styles.css" %}" />
 {% endblock head %}
 {% block content %}
-    {% for book in books %}
-        <a class="book_container" href="{% url "book" book.pk %}">
-            <img src="{{ book.cover_image }}" alt="Cover image of {{ book.title }}" />
-        </a>
-    {% endfor %}
+    <div class="books_container">
+        {% for book in books %}
+            <a class="book_container" href="{% url "book" book.pk %}">
+                <img src="{{ book.cover_image }}" alt="Cover image of {{ book.title }}" />
+            </a>
+        {% endfor %}
+    </div>
 {% endblock content %}

@@ -1,0 +1,54 @@
+:root {
+  --color-header-bg: black;
+  --color-header-text: white;
+  --logo-size: 4rem;
+  --color-text: black;
+  --color-bg: white;
+  --color-content-bg: rgba(0, 0, 0, 0.1);
+}
+
+header {
+  margin: 0;
+  color: var(--color-header-text);
+  height: 0;
+}
+
+html {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  font-family: Helvetica, sans-serif;
+}
+
+div.page {
+  display: flex;
+  justify-content: center;
+  background: var(--color-bg);
+  min-height: calc(100vh - 3rem);
+}
+
+div.content {
+  margin: 0.5rem;
+  margin-top: calc(var(--logo-size) + 1rem);
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: var(--color-content-bg);
+
+  p {
+    text-align: justify;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  scroll-margin-top: 4rem;
+}

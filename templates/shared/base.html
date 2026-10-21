@@ -16,22 +16,25 @@
             {% block title %}
             {% endblock title %}
         </title>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="{% static "styles/page_styles.css" %}">
+        <link rel="stylesheet" href="{% static "styles/nav_styles.css" %}">
         {% block head %}
         {% endblock head %}
     </head>
     <body>
-        <div id="page">
-            <div id="header">
-                <nav id="menu">
-                    <ul>
-                        {% include "shared/menu.html" %}
-                    </ul>
-                </nav>
+        <header>
+            {% include "shared/menu.html" %}
+        </header>
+        <div class="page">
+            <div class="content">
+                {% block content %}
+                {% endblock content %}
             </div>
-            {% block content %}
-            {% endblock content %}
         </div>
         {% block scripts %}
         {% endblock scripts %}
+        <script src="{% static "js/navbar.js" %}"></script>
     </body>
 </html>

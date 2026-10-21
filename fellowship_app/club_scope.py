@@ -76,7 +76,6 @@ class ClubManager(models.Manager):
 
     def get_queryset(self):
         club = get_current_club()
-        print(club)
         if club is None:
             return ClubQuerySet(self.model, using=self._db).none()
         return ClubQuerySet(self.model, using=self._db).filter(club=club)
