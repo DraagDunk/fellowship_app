@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-09 17:21+0000\n"
+"POT-Creation-Date: 2026-10-21 20:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,53 +17,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: clubs/apps.py:7
+
+#: apps.py:7
 msgid "clubs"
 msgstr "klubber"
 
-#: clubs/models/club.py:8
+#: models/club.py:13
 msgid "UUID"
 msgstr "UUID"
 
-#: clubs/models/club.py:9
+#: models/club.py:15
 msgid "name"
 msgstr "navn"
 
-#: clubs/models/club.py:11
+#: models/club.py:19
 msgid "members"
 msgstr "medlemmer"
 
-#: clubs/models/club.py:24
+#: models/club.py:51
 msgid "person"
 msgstr "person"
 
-#: clubs/models/club.py:25
+#: models/club.py:57
 msgid "club"
 msgstr "klub"
 
-#: clubs/models/club.py:27
+#: models/club.py:62
 msgid "manager"
 msgstr "leder"
 
-#: clubs/templates/homepage.html:11
+#: templates/homepage.html:9
 #, python-format
 msgid "Hello and welcome to %(name)s!"
 msgstr "Hej og velkommen til %(name)s!"
 
-#: clubs/templates/homepage.html:17
+#: templates/homepage.html:14
 msgid "Managers"
 msgstr "Ledere"
 
-#: clubs/templates/homepage.html:26
+#: templates/homepage.html:22
 msgid "Members"
 msgstr "Medlemmer"
 
-#: clubs/templates/homepage.html:34
-msgid "Books"
-msgstr "Bøger"
+#: templates/homepage.html:30
+msgid "You can currently suggest books for a vote."
+msgstr "Du kan i øjeblikket foreslå bøger til en afstemning."
 
-#: clubs/templates/registration/login.html:5
-#: clubs/templates/registration/login.html:9
-#: clubs/templates/registration/login.html:13
+#: templates/homepage.html:33
+msgid "You can currently vote."
+msgstr "Du kan i øjeblikket stemme."
+
+#: templates/registration/login.html:4 templates/registration/login.html:7
+#: templates/registration/login.html:11
 msgid "Log in"
 msgstr "Log ind"
+
+#: templates/registration/logout.html:4
+msgid "Thank you for logging out, bye!"
+msgstr "Tak for at logge ud, farvel!"

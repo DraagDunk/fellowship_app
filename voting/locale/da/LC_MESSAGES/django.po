@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-12 09:57+0000\n"
+"POT-Creation-Date: 2026-10-21 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,62 +18,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: voting/models/book_suggestion.py:11
+#: models/book_suggestion.py:16
 msgid "Book"
-msgstr ""
+msgstr "Bog"
 
-#: voting/models/book_suggestion.py:12
+#: models/book_suggestion.py:22
 msgid "Voting round"
 msgstr "Afstemning"
 
-#: voting/models/book_suggestion.py:13 voting/models/book_suggestion.py:17
+#: models/book_suggestion.py:28 models/book_suggestion.py:65
 msgid "User"
 msgstr "Bruger"
 
-#: voting/models/book_suggestion.py:16
-msgid "Book suggestion"
-msgstr "Bogforslag"
-
-#: voting/models/voting_round.py:20
-msgid "Start time"
-msgstr "Starttid"
-
-#: voting/models/voting_round.py:21
-msgid "Suggestions end time"
-msgstr "Forslag sluttid"
-
-#: voting/models/voting_round.py:22
-msgid "Voting end time"
-msgstr "Afstemning sluttid"
-
-#: voting/models/voting_round.py:23
-msgid "Votes per user"
-msgstr "Stemmer per bruger"
-
-#: voting/models/voting_round.py:24
-msgid "Number of winners"
-msgstr "Antal vindere"
-
-#: voting/models/voting_round.py:25
+#: models/book_suggestion.py:34 models/voting_round.py:41
 msgid "Club"
 msgstr "Klub"
 
-#: voting/templates/voting_round_create.html:9
+#: models/book_suggestion.py:45
+#, python-brace-format
+msgid "{book} for {vote} by {user}"
+msgstr "{book} til {vote} af {user}"
+
+#: models/book_suggestion.py:60
+msgid "Book suggestion"
+msgstr "Bogforslag"
+
+#: models/voting_round.py:25
+msgid "Start time"
+msgstr "Starttid"
+
+#: models/voting_round.py:28
+msgid "Suggestions end time"
+msgstr "Forslag sluttid"
+
+#: models/voting_round.py:34
+msgid "Voting end time"
+msgstr "Afstemning sluttid"
+
+#: models/voting_round.py:36
+msgid "Votes per user"
+msgstr "Stemmer per bruger"
+
+#: models/voting_round.py:37
+msgid "Suggestions per user"
+msgstr "Forslag per bruger"
+
+#: models/voting_round.py:38
+msgid "Number of winners"
+msgstr "Antal vindere"
+
+#: models/voting_round.py:86
+#, python-brace-format
+msgid "{club} voting round {start_time}"
+msgstr "{club} afstemning {start_time}"
+
+#: templates/book_suggestion_create.html:7 templates/voting_round_create.html:7
 msgid "Create"
 msgstr "Opret"
 
-#: voting/templates/voting_round_ended.html:5
+#: templates/voting_round_ended.html:4
 msgid "The voting round has ended with the following result:"
 msgstr "Afstemningen er afsluttet med følgende resultat:"
 
-#: voting/templates/voting_round_not_started.html:5
+#: templates/voting_round_ended.html:7
+msgid "<- Winner!"
+msgstr "<- Vinder!"
+
+#: templates/voting_round_not_started.html:4
 msgid "This round starts"
 msgstr "Denne runde starter"
 
-#: voting/templates/voting_round_suggestions.html:5
+#: templates/voting_round_suggestions.html:4
 msgid "You can suggest books until"
 msgstr "Du kan foreslå bøger indtil"
 
-#: voting/templates/voting_round_voting.html:5
+#: templates/voting_round_suggestions.html:10
+msgid "New suggestion"
+msgstr "Nyt forslag"
+
+#: templates/voting_round_suggestions.html:15
+#, python-format
+msgid "You already suggested %(n)s books for this vote"
+msgstr "Du har allerede foreslået {n} bøger til denne afstemning"
+
+#: templates/voting_round_voting.html:4
 msgid "Voting round ends"
 msgstr "Afstemningen slutter"
+
+#: templates/voting_round_voting.html:6
+msgid "Thank you for voting!"
+msgstr "Tak for at stemme!"
+
+#: templates/voting_round_voting.html:12
+msgid "<- You voted for this"
+msgstr "<- Du stemte på denne"
+
+#: templates/voting_round_voting.html:27
+msgid "Vote"
+msgstr "Stem"
+
+#: views/book_suggestion.py:27
+#, python-brace-format
+msgid "User has already suggested {n} books."
+msgstr "Bruger har allerede foreslået {n} bøger"
+
+#: views/voting_round.py:98
+msgid "User has already voted!"
+msgstr "Bruger har allerede stemt!"
+
+#: views/voting_round.py:100
+msgid "User has voted for too many or too few books!"
+msgstr "Bruger har stemt på for mange eller for få bøger!"

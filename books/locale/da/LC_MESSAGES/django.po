@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-09 18:01+0000\n"
+"POT-Creation-Date: 2026-10-21 20:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,91 +18,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: books/models/book.py:11
+#: models/book.py:12
 msgid "Author"
 msgstr "Forfatter"
 
-#: books/models/book.py:12 books/templates/book.html:24
-#: books/templates/genres.html:9
+#: models/book.py:15 templates/book.html:20 templates/genres.html:7
 msgid "Genres"
 msgstr "Genrer"
 
-#: books/models/book.py:31
+#: models/book.py:35
 msgid "Title"
 msgstr "Titel"
 
-#: books/models/book.py:32
+#: models/book.py:36
 msgid "Subtitle"
 msgstr "Undertitel"
 
-#: books/models/book.py:33 books/models/series.py:19
+#: models/book.py:37 models/series.py:20
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: books/models/book.py:34
+#: models/book.py:40
 msgid "Series"
 msgstr "Serie"
 
-#: books/models/book.py:35
+#: models/book.py:46
 msgid "Cover image URL"
 msgstr "Forsidebillede-URL"
 
-#: books/models/book.py:36
+#: models/book.py:47
 msgid "Information URL"
 msgstr "Informations-URL"
 
-#: books/models/book.py:37
+#: models/book.py:48
 msgid "Seller URL"
 msgstr "Salgs-URL"
 
-#: books/models/book.py:38
+#: models/book.py:49
 msgid "Library URL"
 msgstr "Biblioteks-URL"
 
-#: books/models/book.py:39 books/models/series.py:20
+#: models/book.py:51 models/series.py:22
 msgid "Language"
 msgstr "Sprog"
 
-#: books/models/book.py:40 books/models/series.py:21
+#: models/book.py:53 models/series.py:24
 msgid "Original language"
 msgstr "Originalsprog"
 
-#: books/models/book.py:41 books/models/series.py:22
+#: models/book.py:56 models/series.py:27
 msgid "Core"
 msgstr "Kerne"
 
-#: books/models/series.py:18
+#: models/series.py:19
 msgid "Name"
 msgstr "Navn"
 
-#: books/models/shared.py:5
+#: models/shared.py:6
 msgid "Danish"
 msgstr "Dansk"
 
-#: books/models/shared.py:6
+#: models/shared.py:7
 msgid "English"
 msgstr "Engelsk"
 
-#: books/templates/book.html:19
+#: templates/book.html:15
 msgid "By"
 msgstr "Af"
 
-#: books/templates/book.html:32
+#: templates/book.html:25
 msgid "More info"
 msgstr "Mere info"
 
-#: books/templates/book.html:33
+#: templates/book.html:26
 msgid "Buy"
 msgstr "Køb"
 
-#: books/templates/book.html:34
+#: templates/book.html:27
 msgid "Library"
 msgstr "Bibliotek"
 
-#: books/templates/book.html:39
+#: templates/book.html:31
 msgid "Other versions"
 msgstr "Andre versioner"
 
-#: books/templates/books.html:5
+#: templates/books.html:5
 msgid "Books"
 msgstr "Bøger"
