@@ -158,7 +158,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "djlint", specifier = ">=1.46.4" },
+    { name = "djlint", specifier = "==1.46.4" },
     { name = "pre-commit", specifier = "==4.6.2" },
     { name = "pytest", specifier = "==9.1.1" },
     { name = "pytest-django", specifier = "==4.14.0" },
