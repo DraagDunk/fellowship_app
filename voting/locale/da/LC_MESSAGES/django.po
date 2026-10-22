@@ -99,7 +99,7 @@ msgstr "Nyt forslag"
 #: templates/voting_round_suggestions.html:15
 #, python-format
 msgid "You already suggested %(n)s books for this vote"
-msgstr "Du har allerede foreslået {n} bøger til denne afstemning"
+msgstr "Du har allerede foreslået %(n)s bøger til denne afstemning"
 
 #: templates/voting_round_voting.html:4
 msgid "Voting round ends"
