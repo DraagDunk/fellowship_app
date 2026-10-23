@@ -99,6 +99,13 @@ class BookVersionForm(forms.ModelForm):
         widget=forms.NumberInput(attrs={"min": "1"}),
     )
 
+    genres = forms.ModelMultipleChoiceField(
+        Genre.objects.all(),
+        required=False,
+        label=_("Genres"),
+        widget=forms.CheckboxSelectMultiple(),
+    )
+
     author = forms.CharField(required=True, label=_("Author"), widget=forms.TextInput())
 
     class Meta:
@@ -137,6 +144,8 @@ class BookVersionForm(forms.ModelForm):
         )
         if created:
             core.author.set(authors)
+        if genres := cleaned.get("genres"):
+            core.genres.set(genres)
 
         cleaned["core"] = core
 
