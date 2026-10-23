@@ -137,19 +137,25 @@ class BookVersionForm(forms.ModelForm):
         )
         if created:
             core.author.set(authors)
+
         cleaned["core"] = core
 
         # Get the series from the series name
         if series_name := cleaned.get("series_name"):
-            series, created = SeriesVersion.objects.get_or_create(
+            series = SeriesVersion.objects.filter(
                 name=series_name,
                 language=cleaned.get("language"),
                 original_language=cleaned.get("original_language"),
-            )
-            if created:
+            ).first()
+            if not series:
                 core = SeriesCore.objects.create()
                 core.author.set(authors)
-                series.core = core
+                series = SeriesVersion.objects.create(
+                    original_language=cleaned.get("original_language"),
+                    language=cleaned.get("language"),
+                    name=series_name,
+                    core=core,
+                )
             cleaned["series"] = series
 
         cleaned.pop("author")
