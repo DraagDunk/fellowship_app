@@ -12,7 +12,7 @@
     </ul>
     {% if not can_still_suggest %}
         <p>
-            {% blocktranslate with n=round.suggestions_per_user %}
+            {% blocktranslate trimmed with n=round.suggestions_per_user %}
                 You already suggested {{ n }} books for this vote
             {% endblocktranslate %}
         </p>

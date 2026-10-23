@@ -93,7 +93,6 @@ class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
 
     def post(self, request, *args, **kwargs):
         book_ids = [int(book_id) for book_id in request.POST.getlist("books", [])]
-        print("books_ids:", book_ids)
         voting_round = self.get_object()
         if request.user.has_voted(voting_round):
             raise ValidationError(_("User has already voted!"))

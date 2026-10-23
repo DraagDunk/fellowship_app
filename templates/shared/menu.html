@@ -1,0 +1,18 @@
+{% load i18n %}
+{% if request.user.is_authenticated %}
+    <div class="topnav" id="topnav">
+        <a id="home-link" class="narrow" href="{% url "home_page" %}">{{ request.user.membership.club }}</a>
+        <nav id="navigation">
+            <a href="{% url "books" %}">{% translate "Books" %}</a>
+            {% if request.user.is_authenticated %}
+                <form action="{% url "logout" %}" method="post">
+                    {% csrf_token %}
+                    <button class="link" type="submit">{% translate "Log out" %}</button>
+                </form>
+            {% endif %}
+        </nav>
+        <button id="burger" type="button" class="link icon" onclick="menuFunction()">
+            <i class="fa fa-bars"></i>
+        </button>
+    </div>
+{% endif %}

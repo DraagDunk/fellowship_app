@@ -1,6 +1,14 @@
+.books_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .book_container {
   display: inline-block;
   padding: 0;
+  margin: 0.2rem;
 
   transition: transform ease-in-out 0.5s;
 
