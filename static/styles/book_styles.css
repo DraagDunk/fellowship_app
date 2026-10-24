@@ -20,3 +20,66 @@
     max-width: 200px;
   }
 }
+
+ul.book_suggestions_list {
+  all: unset;
+
+  li {
+    all: unset;
+  }
+}
+
+a.book_card {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.book_card {
+  display: flex;
+  align-items: center;
+
+  padding: 0.5rem;
+  background-color: var(--color-content-bg);
+  border-radius: 0.5rem;
+
+  transition: transform ease-in-out 0.5s;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .info_container {
+    margin-left: 1rem;
+    height: fit-content;
+
+    h3.title {
+      text-align: left;
+      margin-top: 0.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    p {
+      margin: 0.3rem 0;
+
+      &.subtitle {
+        font-style: italic;
+      }
+
+      &.authors {
+        font-style: italic;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .image_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    img {
+      max-width: 80px;
+    }
+  }
+}
