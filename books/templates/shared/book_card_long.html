@@ -1,0 +1,19 @@
+{% load i18n %}
+<a href="{% url "book" book.original_version.pk %}"
+   class="book_card long"
+   id="book_card__{{ book.pk }}">
+    <div class="image_container">
+        <img src="{{ book.cover_image }}"
+             alt="{% translate "Cover image of" %} {{ book.title }}." />
+    </div>
+    <div class="info_container" title="{{ book.description }}">
+        <h3 class="title">{{ book.title }}</h3>
+        {% if book.subtitle %}
+            <p class="subtitle">{{ book.subtitle }}</p>
+        {% endif %}
+        {% if book.series %}
+            <p class="series">{{ book.series.name }} {{ book.series_number }}</p>
+        {% endif %}
+        <p class="authors">{% translate "By" %} {{ book.author_string }}</p>
+    </div>
+</a>

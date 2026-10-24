@@ -1,10 +1,13 @@
 {% extends "shared/base.html" %}
-{% load humanize i18n %}
+{% load humanize i18n static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/book_styles.css" %}" />
+{% endblock head %}
 {% block content %}
     <p>{% translate "You can suggest books until" %} {{ round.suggestions_end_time | naturaltime }}</p>
-    <ul>
+    <ul class="book_suggestions_list">
         {% for suggestion in round.book_suggestions.all %}
-            <li>{{ suggestion.book }}</li>
+            <li>{% include "shared/book_card_long.html" with book=suggestion.book %}</li>
         {% endfor %}
         {% if can_still_suggest %}
             <li><a href="{% url "book_suggestion_create" round.pk %}">{% translate "New suggestion" %}</a></li>
