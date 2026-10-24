@@ -24,8 +24,18 @@
 ul.book_suggestions_list {
   all: unset;
 
+  @media (min-width: 800px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
   li {
     all: unset;
+
+    @media (min-width: 800px) {
+      width: calc(50% - 0.5rem);
+    }
   }
 }
 
