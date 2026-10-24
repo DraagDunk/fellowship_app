@@ -4,7 +4,11 @@
     <link rel="stylesheet" href="{% static "styles/book_styles.css" %}" />
 {% endblock head %}
 {% block content %}
-    <p>{% translate "You can suggest books until" %} {{ round.suggestions_end_time | naturaltime }}</p>
+    <p>
+        {% blocktranslate trimmed with n=round.suggestions_per_user time=round.suggestions_end_time|naturaltime %}
+            You can suggest {{ n }} books until {{ time }}.
+        {% endblocktranslate %}
+    </p>
     <ul class="book_suggestions_list">
         {% for suggestion in round.book_suggestions.all %}
             <li>{% include "shared/book_card_long.html" with book=suggestion.book %}</li>
@@ -16,11 +20,4 @@
             </li>
         {% endif %}
     </ul>
-    {% if not can_still_suggest %}
-        <p>
-            {% blocktranslate trimmed with n=round.suggestions_per_user %}
-                You already suggested {{ n }} books for this vote
-            {% endblocktranslate %}
-        </p>
-    {% endif %}
 {% endblock content %}
