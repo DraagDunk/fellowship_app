@@ -10,7 +10,10 @@
             <li>{% include "shared/book_card_long.html" with book=suggestion.book %}</li>
         {% endfor %}
         {% if can_still_suggest %}
-            <li><a href="{% url "book_suggestion_create" round.pk %}">{% translate "New suggestion" %}</a></li>
+            <li>
+                <a class="book_card new"
+                   href="{% url "book_suggestion_create" round.pk %}"><i class="fa-solid fa-circle-plus"></i></a>
+            </li>
         {% endif %}
     </ul>
     {% if not can_still_suggest %}

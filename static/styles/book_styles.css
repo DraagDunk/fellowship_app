@@ -46,6 +46,15 @@ a.book_card {
   transition: transform ease-in-out 0.5s;
   margin-bottom: 0.5rem;
 
+  &.new {
+    justify-content: center;
+
+    i {
+      font-size: 6rem;
+      color: var(--color-content-bg);
+    }
+  }
+
   &:hover {
     transform: scale(1.05);
   }
