@@ -16,7 +16,7 @@
             </li>
         {% endfor %}
         {% if can_still_suggest %}
-            <li>
+            <li class="suggestion">
                 <a class="book_card new"
                    href="{% url "book_suggestion_create" round.pk %}"><i class="fa-solid fa-circle-plus"></i></a>
             </li>
