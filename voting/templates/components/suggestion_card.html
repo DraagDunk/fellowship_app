@@ -16,4 +16,7 @@
         {% endif %}
         <p class="authors">{% translate "By" %} {{ book.author_string }}</p>
     </div>
+    {% if suggested_by %}
+        <div class="suggested_by">{{ suggested_by }}</div>
+    {% endif %}
 </a>
