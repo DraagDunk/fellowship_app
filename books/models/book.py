@@ -45,7 +45,10 @@ class BookCore(models.Model):
         return ", ".join(self.author.values_list("name", flat=True))
 
     def __str__(self):
-        return self.title or f"Unknown book ({self.pk})"
+        if self.original_version:
+            return self.title
+        else:
+            return f"Unknown book ({self.pk})"
 
 
 class BookVersion(models.Model):
