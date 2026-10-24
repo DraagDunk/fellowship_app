@@ -10,9 +10,9 @@
         {% endblocktranslate %}
     </p>
     <ul class="book_suggestions_list">
-        {% for suggestion in round.book_suggestions.all %}
+        {% for suggestion in suggestions %}
             <li class="suggestion">
-                {% include "components/suggestion_card.html" with book=suggestion.book suggested_by=suggestion.user.get_full_name %}
+                {% include "components/suggestion_card.html" with book=suggestion.book suggested_by=suggestion.user.get_full_name highlighted=suggestion.own %}
             </li>
         {% endfor %}
         {% if can_still_suggest %}

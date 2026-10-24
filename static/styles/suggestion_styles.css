@@ -1,3 +1,7 @@
+:root {
+  --color-primary: rgb(32, 127, 172);
+}
+
 ul.book_suggestions_list {
   all: unset;
 
@@ -13,22 +17,6 @@ ul.book_suggestions_list {
     @media (min-width: 800px) {
       width: calc(50% - 0.5rem);
     }
-
-    a.book_card {
-      position: relative;
-    }
-
-    div.suggested_by {
-      position: absolute;
-      top: 0;
-      right: 0;
-
-      padding: 0.2rem;
-      border-radius: 0 0.5rem 0 0.5rem;
-      background-color: var(--color-content-bg);
-
-      font-size: 0.8rem;
-    }
   }
 }
 
@@ -39,6 +27,7 @@ a.book_card {
 
 .book_card {
   display: flex;
+  position: relative;
   align-items: center;
   height: 8rem;
 
@@ -48,6 +37,20 @@ a.book_card {
 
   transition: transform ease-in-out 0.5s;
   margin-bottom: 0.5rem;
+
+  &.highlighted {
+    outline: 3px solid var(--color-primary);
+
+    .suggested_by {
+      background-color: var(--color-primary);
+      color: white;
+
+      /* Stops the label from flickering */
+      top: -1px;
+      right: -1px;
+      padding: calc(0.2rem + 1px) 0.2rem 0.2rem calc(0.2rem + 1px);
+    }
+  }
 
   &.new {
     justify-content: center;
@@ -95,5 +98,17 @@ a.book_card {
     img {
       height: 100%;
     }
+  }
+
+  div.suggested_by {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    padding: 0.2rem;
+    border-radius: 0 0.5rem 0 0.5rem;
+    background-color: var(--color-content-bg);
+
+    font-size: 0.8rem;
   }
 }

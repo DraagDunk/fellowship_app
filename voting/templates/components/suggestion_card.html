@@ -1,6 +1,6 @@
 {% load i18n %}
 <a href="{% url "book" book.original_version.pk %}"
-   class="book_card"
+   class="book_card {% if highlighted %}highlighted{% endif %}"
    id="book_card__{{ book.pk }}">
     <div class="image_container">
         <img src="{{ book.cover_image }}"
