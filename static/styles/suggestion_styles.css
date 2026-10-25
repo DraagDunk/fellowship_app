@@ -134,6 +134,7 @@ input.suggestion_checkbox {
     &.votes,
     &.selected {
       font-size: 1.5rem;
+      font-family: fantasy;
     }
   }
 }
