@@ -5,6 +5,7 @@
   --color-text: black;
   --color-bg: white;
   --color-content-bg: rgba(0, 0, 0, 0.1);
+  --color-primary: rgb(32, 127, 172);
 }
 
 header {

@@ -1,0 +1,16 @@
+{% load i18n %}
+<li class="suggestion">
+    <input type="checkbox"
+           id="checkbox__{{ suggestion.pk }}"
+           class="suggestion_checkbox"
+           name="books"
+           value="{{ suggestion.pk }}" />
+    <label class="book_card"
+           id="book_card__{{ suggestion.book.pk }}"
+           for="checkbox__{{ suggestion.pk }}">
+        {% include "components/book_info_card.html" with book=suggestion.book %}
+        <div class="selected label">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+    </label>
+</li>

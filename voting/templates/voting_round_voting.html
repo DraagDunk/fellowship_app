@@ -1,5 +1,8 @@
 {% extends "shared/base.html" %}
-{% load humanize i18n %}
+{% load humanize i18n static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/suggestion_styles.css" %}" />
+{% endblock head %}
 {% block content %}
     <p>{% translate "Voting round ends" %} {{ round.voting_end_time | naturaltime }}</p>
     {% if has_voted %}
@@ -17,14 +20,12 @@
     {% else %}
         <form method="post">
             {% csrf_token %}
-            {% for suggestion in round.book_suggestions.all %}
-                <input type="checkbox"
-                       value="{{ suggestion.pk }}"
-                       name="books"
-                       id="checkbox__{{ suggestion.pk }}" />
-                <label for="checkbox__{{ suggestion.pk }}">{{ suggestion.book }}</label>
-            {% endfor %}
-            <button type="submit">{% translate "Vote" %}</button>
+            <ul class="book_suggestions_list">
+                {% for suggestion in round.book_suggestions.all %}
+                    {% include "components/voting_card.html" with suggestion=suggestion %}
+                {% endfor %}
+            </ul>
+            <button class="big" type="submit">{% translate "Vote" %}</button>
         </form>
     {% endif %}
 {% endblock content %}
