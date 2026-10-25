@@ -44,6 +44,12 @@ class Club(models.Model):
             suggestions_end_time__lte=timezone.now(), voting_end_time__gt=timezone.now()
         )
 
+    def ended_voting_rounds(self):
+        return self.voting_rounds.filter(voting_end_time__lte=timezone.now())
+
+    def most_recent_ended_vote(self):
+        return self.ended_voting_rounds().last()
+
 
 class ClubMembership(models.Model):
     person = models.OneToOneField(
