@@ -131,7 +131,8 @@ input.suggestion_checkbox {
 
     font-size: 0.8rem;
 
-    &.votes {
+    &.votes,
+    &.selected {
       font-size: 1.5rem;
     }
   }
