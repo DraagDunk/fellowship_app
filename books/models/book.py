@@ -26,9 +26,29 @@ class BookCore(models.Model):
     def cover_image(self):
         return self.original_version.cover_image
 
+    @property
+    def title(self):
+        return self.original_version.title
+
+    @property
+    def subtitle(self):
+        return self.original_version.subtitle
+
+    @property
+    def description(self):
+        return self.original_version.description
+
+    @property
+    def series(self):
+        return self.original_version.series
+
+    @property
+    def author_string(self):
+        return ", ".join(self.author.values_list("name", flat=True))
+
     def __str__(self):
-        if original_version := self.versions.filter(original_language=True).first():
-            return original_version.title
+        if self.original_version:
+            return self.title
         else:
             return f"Unknown book ({self.pk})"
 
@@ -82,6 +102,10 @@ class BookVersion(models.Model):
     @property
     def other_versions(self):
         return self.core.versions.exclude(pk=self.pk)
+
+    @property
+    def author_string(self):
+        return self.core.author_string
 
 
 class BookVersionForm(forms.ModelForm):

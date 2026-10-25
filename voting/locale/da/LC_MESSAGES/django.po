@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 20:24+0000\n"
+"POT-Creation-Date: 2026-10-24 19:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,18 +88,10 @@ msgstr "<- Vinder!"
 msgid "This round starts"
 msgstr "Denne runde starter"
 
-#: templates/voting_round_suggestions.html:4
-msgid "You can suggest books until"
-msgstr "Du kan foreslå bøger indtil"
-
-#: templates/voting_round_suggestions.html:10
-msgid "New suggestion"
-msgstr "Nyt forslag"
-
-#: templates/voting_round_suggestions.html:15
+#: templates/voting_round_suggestions.html:8
 #, python-format
-msgid "You already suggested %(n)s books for this vote"
-msgstr "Du har allerede foreslået %(n)s bøger til denne afstemning"
+msgid "You can suggest %(n)s books until %(time)s."
+msgstr "Du kan foreslå %(n)s bøger indtil %(time)s."
 
 #: templates/voting_round_voting.html:4
 msgid "Voting round ends"
