@@ -130,5 +130,9 @@ input.suggestion_checkbox {
     background-color: var(--color-content-bg);
 
     font-size: 0.8rem;
+
+    &.votes {
+      font-size: 1.5rem;
+    }
   }
 }

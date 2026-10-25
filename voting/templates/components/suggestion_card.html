@@ -12,5 +12,8 @@
                 <i class="fa-solid fa-circle-check"></i>
             </div>
         {% endif %}
+        {% if votes is not None %}
+            <div class="votes label">{{ votes }}</div>
+        {% endif %}
     </a>
 </li>
