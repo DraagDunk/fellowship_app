@@ -88,7 +88,7 @@ class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
             ).values_list("pk", flat=True)
         context["can_still_suggest"] = self.request.user.can_still_suggest(self.object)
         context["suggestions"] = self.object.book_suggestions.all().annotate(
-            own=Q(user=self.request.user)
+            own=Q(user=self.request.user), voted_for=Q(votes__user=self.request.user)
         )
         return context
 

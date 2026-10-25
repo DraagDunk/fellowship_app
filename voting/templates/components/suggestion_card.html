@@ -1,11 +1,16 @@
 {% load i18n %}
 <li class="suggestion">
     <a href="{% url "book" book.original_version.pk %}"
-       class="book_card {% if highlighted %}highlighted{% endif %}"
+       class="book_card {% if voted_for %}highlighted{% endif %}"
        id="book_card__{{ book.pk }}">
         {% include "components/book_info_card.html" %}
         {% if suggested_by %}
             <div class="suggested_by label">{{ suggested_by }}</div>
+        {% endif %}
+        {% if voted_for %}
+            <div class="selected label">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
         {% endif %}
     </a>
 </li>
