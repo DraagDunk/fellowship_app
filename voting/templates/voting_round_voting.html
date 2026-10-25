@@ -9,7 +9,7 @@
         {% translate "Thank you for voting!" %}
         <ul class="book_suggestions_list">
             {% for suggestion in suggestions %}
-                {% include "components/suggestion_card.html" with book=suggestion.book voted_for=suggestion.voted_for highlighted=voted_for %}
+                {% include "components/suggestion_card.html" with book=suggestion.book voted_for=suggestion.voted_for highlighted=suggestion.voted_for %}
             {% endfor %}
         </ul>
     {% else %}

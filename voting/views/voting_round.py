@@ -3,7 +3,7 @@ from typing import ClassVar
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.db.models import Q
+from django.db.models import Exists, OuterRef, Q
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils import timezone
@@ -87,8 +87,11 @@ class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
                 votes__user=self.request.user
             ).values_list("pk", flat=True)
         context["can_still_suggest"] = self.request.user.can_still_suggest(self.object)
+        user_votes = Vote.objects.filter(
+            book_suggestion=OuterRef("pk"), user=self.request.user
+        )
         context["suggestions"] = self.object.book_suggestions.all().annotate(
-            own=Q(user=self.request.user), voted_for=Q(votes__user=self.request.user)
+            own=Q(user=self.request.user), voted_for=Exists(user_votes)
         )
         return context
 
