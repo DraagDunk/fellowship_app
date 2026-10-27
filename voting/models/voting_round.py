@@ -3,7 +3,7 @@ from enum import Enum
 
 from django import forms
 from django.db import models
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -75,9 +75,12 @@ class VotingRound(models.Model):
                 return self.StateEnum.UNKNOWN
 
     def result(self):
-        return self.book_suggestions.annotate(number_of_votes=Count("votes")).order_by(
-            "-number_of_votes"
-        )
+        result_qs = self.book_suggestions.annotate(
+            number_of_votes=Count("votes")
+        ).order_by("-number_of_votes")
+        print(result_qs)
+        votes_for_last_winner = result_qs[self.number_of_winners - 1].number_of_votes
+        return result_qs.annotate(winner=Q(number_of_votes__gte=votes_for_last_winner))
 
     def get_absolute_url(self):
         return reverse_lazy("voting_round", kwargs={"pk": self.pk})

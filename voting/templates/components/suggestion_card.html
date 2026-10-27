@@ -1,22 +1,19 @@
 {% load i18n %}
-<a href="{% url "book" book.original_version.pk %}"
-   class="book_card {% if highlighted %}highlighted{% endif %}"
-   id="book_card__{{ book.pk }}">
-    <div class="image_container">
-        <img src="{{ book.cover_image }}"
-             alt="{% translate "Cover image of" %} {{ book.title }}." />
-    </div>
-    <div class="info_container" title="{{ book.description }}">
-        <h3 class="title">{{ book.title }}</h3>
-        {% if book.subtitle %}
-            <p class="subtitle">{{ book.subtitle }}</p>
+<li class="suggestion">
+    <a href="{% url "book" book.original_version.pk %}"
+       class="book_card {% if highlighted %}highlighted{% endif %}"
+       id="book_card__{{ book.pk }}">
+        {% include "components/book_info_card.html" %}
+        {% if suggested_by %}
+            <div class="suggested_by label">{{ suggested_by }}</div>
         {% endif %}
-        {% if book.series %}
-            <p class="series">{{ book.series.name }} {{ book.series_number }}</p>
+        {% if voted_for %}
+            <div class="selected label">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
         {% endif %}
-        <p class="authors">{% translate "By" %} {{ book.author_string }}</p>
-    </div>
-    {% if suggested_by %}
-        <div class="suggested_by">{{ suggested_by }}</div>
-    {% endif %}
-</a>
+        {% if votes is not None %}
+            <div class="votes label">{{ votes }}</div>
+        {% endif %}
+    </a>
+</li>

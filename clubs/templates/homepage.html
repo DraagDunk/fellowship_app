@@ -32,4 +32,7 @@
     {% for round in club.current_voting_rounds %}
         <a href="{% url "voting_round" round.pk %}">{% translate "You can currently vote." %}</a>
     {% endfor %}
+    {% if club.most_recent_ended_vote %}
+        <a href="{% url "voting_round" club.most_recent_ended_vote.pk %}">{% translate "See results from most recent vote!" %}</a>
+    {% endif %}
 {% endblock content %}

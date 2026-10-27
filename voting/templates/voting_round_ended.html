@@ -1,10 +1,13 @@
 {% extends "shared/base.html" %}
-{% load humanize i18n %}
+{% load humanize i18n static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/suggestion_styles.css" %}" />
+{% endblock head %}
 {% block content %}
     <p>{% translate "The voting round has ended with the following result:" %}</p>
-    <ul>
+    <ul class="book_suggestions_list">
         {% for suggestion in round.result %}
-            <li>{{ suggestion.book }} ({{ suggestion.number_of_votes }}) {% if forloop.counter0 < round.number_of_winners %}{% translate "<- Winner!" %}{% endif %}</li>
+            {% include "components/suggestion_card.html" with book=suggestion.book highlighted=suggestion.winner votes=suggestion.number_of_votes %}
         {% endfor %}
     </ul>
 {% endblock content %}

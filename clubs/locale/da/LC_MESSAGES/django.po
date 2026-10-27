@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 20:20+0000\n"
+"POT-Creation-Date: 2026-10-25 15:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,15 +34,15 @@ msgstr "navn"
 msgid "members"
 msgstr "medlemmer"
 
-#: models/club.py:51
+#: models/club.py:59
 msgid "person"
 msgstr "person"
 
-#: models/club.py:57
+#: models/club.py:65
 msgid "club"
 msgstr "klub"
 
-#: models/club.py:62
+#: models/club.py:70
 msgid "manager"
 msgstr "leder"
 
@@ -66,6 +66,10 @@ msgstr "Du kan i øjeblikket foreslå bøger til en afstemning."
 #: templates/homepage.html:33
 msgid "You can currently vote."
 msgstr "Du kan i øjeblikket stemme."
+
+#: templates/homepage.html:36
+msgid "See results from most recent vote!"
+msgstr "Se resultater fra seneste afstemning!"
 
 #: templates/registration/login.html:4 templates/registration/login.html:7
 #: templates/registration/login.html:11
