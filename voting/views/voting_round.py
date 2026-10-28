@@ -10,8 +10,9 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DetailView, ListView
 
+from ..forms.voting_round import VotingRoundForm
 from ..models.book_suggestion import BookSuggestion, Vote
-from ..models.voting_round import VotingRound, VotingRoundForm
+from ..models.voting_round import VotingRound
 
 
 def is_manager(self: User):
