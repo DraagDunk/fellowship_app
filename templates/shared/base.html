@@ -28,7 +28,7 @@
         <header>
             {% include "shared/menu.html" %}
         </header>
-        <div class="page">
+        <div class="page {% block page_class %}{% endblock page_class %}">
             <div class="content">
                 {% block content %}
                 {% endblock content %}

@@ -1,13 +1,16 @@
 {% extends "shared/base.html" %}
-{% load i18n %}
+{% load i18n static %}
 {% block title %}
     {% translate "Log in" %}
 {% endblock title %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/login_styles.css" %}">
+{% endblock head %}
+{% block page_class %}login{% endblock page_class %}
 {% block content %}
-    <h1>{% translate "Log in" %}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">{% translate "Log in" %}</button>
+        <button class="big" type="submit">{% translate "Log in" %}</button>
     </form>
 {% endblock content %}
