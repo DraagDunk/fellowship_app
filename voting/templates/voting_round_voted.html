@@ -1,0 +1,14 @@
+{% extends "shared/base.html" %}
+{% load humanize i18n static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/suggestion_styles.css" %}" />
+{% endblock head %}
+{% block content %}
+    <p>{% translate "Voting round ends" %} {{ round.voting_end_time | naturaltime }}</p>
+    {% translate "Thank you for voting!" %}
+    <ul class="book_suggestions_list">
+        {% for suggestion in suggestions %}
+            {% include "components/suggestion_card.html" with book=suggestion.book voted_for=suggestion.voted_for highlighted=suggestion.voted_for %}
+        {% endfor %}
+    </ul>
+{% endblock content %}

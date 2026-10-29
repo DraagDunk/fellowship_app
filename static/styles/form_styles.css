@@ -17,3 +17,26 @@ button.big {
     color: var(--color-primary);
   }
 }
+
+ul.errorlist {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+
+  border-radius: 0.5rem;
+  background-color: var(--color-error);
+
+  li {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  &::before {
+    font-size: 3rem;
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    content: "\f071";
+    font-weight: 900;
+    color: white;
+  }
+}
