@@ -5,22 +5,8 @@
 {% endblock head %}
 {% block content %}
     <p>{% translate "Voting round ends" %} {{ round.voting_end_time | naturaltime }}</p>
-    {% if has_voted %}
-        {% translate "Thank you for voting!" %}
-        <ul class="book_suggestions_list">
-            {% for suggestion in suggestions %}
-                {% include "components/suggestion_card.html" with book=suggestion.book voted_for=suggestion.voted_for highlighted=suggestion.voted_for %}
-            {% endfor %}
-        </ul>
-    {% else %}
-        <form method="post">
-            {% csrf_token %}
-            <ul class="book_suggestions_list">
-                {% for suggestion in suggestions %}
-                    {% include "components/voting_card.html" with suggestion=suggestion %}
-                {% endfor %}
-            </ul>
-            <button class="big" type="submit">{% translate "Vote" %}</button>
-        </form>
-    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
 {% endblock content %}

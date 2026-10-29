@@ -2,16 +2,17 @@ from typing import ClassVar
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
+from django.core.exceptions import PermissionDenied
 from django.db.models import Exists, OuterRef, Q
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, FormView, ListView
 
+from ..forms.voting_round import VotingRoundForm, VotingRoundVotingForm
 from ..models.book_suggestion import BookSuggestion, Vote
-from ..models.voting_round import VotingRound, VotingRoundForm
+from ..models.voting_round import VotingRound
 
 
 def is_manager(self: User):
@@ -73,7 +74,7 @@ class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
     template_map: ClassVar[dict[VotingRound.StateEnum, str]] = {
         VotingRound.StateEnum.NOT_STARTED: "voting_round_not_started.html",
         VotingRound.StateEnum.SUGGESTIONS: "voting_round_suggestions.html",
-        VotingRound.StateEnum.VOTING: "voting_round_voting.html",
+        VotingRound.StateEnum.VOTING: "voting_round_voted.html",
         VotingRound.StateEnum.ENDED: "voting_round_ended.html",
     }
 
@@ -98,19 +99,44 @@ class VotingRoundUserDetailView(LoginRequiredMixin, DetailView):
     def get_template_names(self):
         return [self.template_map[self.object.state()]]
 
-    def post(self, request, *args, **kwargs):
-        book_ids = [int(book_id) for book_id in request.POST.getlist("books", [])]
-        voting_round = self.get_object()
-        if request.user.has_voted(voting_round):
-            raise ValidationError(_("User has already voted!"))
-        elif len(book_ids) != voting_round.votes_per_user:
-            raise ValidationError(_("User has voted for too many or too few books!"))
-        else:
-            for book_id in book_ids:
-                suggestion_obj = BookSuggestion.objects.get(pk=book_id)
-                Vote.objects.create(user=request.user, book_suggestion=suggestion_obj)
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        if (
+            self.object.state() == VotingRound.StateEnum.VOTING
+            and not request.user.has_voted(self.object)
+        ):
+            return redirect(
+                reverse_lazy("voting_round_vote", kwargs={"pk": self.object.pk})
+            )
+        return response
 
-        return self.get(request, *args, **kwargs)
+
+class VotingRoundVotingView(LoginRequiredMixin, FormView):
+    template_name = "voting_round_voting.html"
+    form_class = VotingRoundVotingForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["round"] = self.voting_round
+        return context
+
+    def dispatch(self, request, *args, **kwargs):
+        self.voting_round = get_object_or_404(VotingRound, pk=kwargs.get("pk"))
+        if request.user.has_voted(self.voting_round):
+            raise PermissionDenied(_("User already voted!"))
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["voting_round"] = self.voting_round
+        return kwargs
+
+    def form_valid(self, form: VotingRoundVotingForm):
+        form.save(user=self.request.user)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("voting_round", kwargs={"pk": self.voting_round.pk})
 
 
 class VotingRoundManagerDetailView(ManagerRequiredMixin, VotingRoundUserDetailView):

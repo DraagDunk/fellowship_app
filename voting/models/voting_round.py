@@ -1,7 +1,6 @@
 from datetime import timedelta
 from enum import Enum
 
-from django import forms
 from django.db import models
 from django.db.models import Count, Q
 from django.urls import reverse_lazy
@@ -89,28 +88,3 @@ class VotingRound(models.Model):
         return _("{club} voting round {start_time}").format(
             club=self.club, start_time=self.start_time
         )
-
-
-class VotingRoundForm(forms.ModelForm):
-    class Meta:
-        model = VotingRound
-        fields = (
-            "start_time",
-            "suggestions_end_time",
-            "voting_end_time",
-            "suggestions_per_user",
-            "votes_per_user",
-            "number_of_winners",
-            "club",
-        )
-        widgets = {
-            "start_time": forms.DateTimeInput(
-                attrs={"type": "datetime-local"}, format="%Y-%m-%dT%H:%M"
-            ),
-            "suggestions_end_time": forms.DateTimeInput(
-                attrs={"type": "datetime-local"}, format="%Y-%m-%dT%H:%M"
-            ),
-            "voting_end_time": forms.DateTimeInput(
-                attrs={"type": "datetime-local"}, format="%Y-%m-%dT%H:%M"
-            ),
-        }

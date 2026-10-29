@@ -1,0 +1,17 @@
+<li class="suggestion">
+    <input type="checkbox"
+           id="checkbox__{{ widget.value|stringformat:'s' }}"
+           name="{{ widget.name }}"
+           class="suggestion_checkbox"
+           value="{{ widget.value|stringformat:'s' }}"
+           {% if widget.selected %}checked{% endif %}
+           {% for name, value in widget.attrs.items %}{{ name }}="{{ value }}" {% endfor %} />
+    <label class="book_card"
+           id="book_card__{{ widget.value|stringformat:'s' }}"
+           for="checkbox__{{ widget.value|stringformat:'s' }}">
+        {% include "components/book_info_card.html" with book=widget.book %}
+        <div class="selected label">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+    </label>
+</li>
