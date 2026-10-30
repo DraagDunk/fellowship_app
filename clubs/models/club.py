@@ -68,3 +68,8 @@ class ClubMembership(models.Model):
     manager = models.BooleanField(verbose_name=_("manager"), default=False)
 
     objects = ClubManager()
+
+    def __str__(self):
+        return _("{name} of {club}").format(
+            name=self.person.get_full_name(), club=self.club.name
+        )
