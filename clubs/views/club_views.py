@@ -1,5 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
+from django.views.generic import CreateView, ListView, TemplateView
+
+from views.shared.manager_required_mixin import ManagerRequiredMixin
+
+from ..forms.club import ClubMembershipForm
+from ..models.club import ClubMembership
 
 
 class HomePageView(LoginRequiredMixin, TemplateView):
@@ -12,3 +17,15 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context["club"] = self.get_queryset()
         return context
+
+
+class ClubMembershipListView(ManagerRequiredMixin, ListView):
+    model = ClubMembership
+    template_name = "clubmemberships.html"
+    context_object_name = "memberships"
+
+
+class ClubMembershipCreateView(ManagerRequiredMixin, CreateView):
+    model = ClubMembership
+    template_name = "clubmembership_create.html"
+    form_class = ClubMembershipForm
