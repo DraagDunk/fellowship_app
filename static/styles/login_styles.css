@@ -25,7 +25,8 @@
     }
 
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="email"] {
       all: unset;
       display: block;
       width: 100%;
