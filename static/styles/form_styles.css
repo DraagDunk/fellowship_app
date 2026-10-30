@@ -1,6 +1,10 @@
-button.big {
+button.big,
+a.button.big {
   all: unset;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-primary);
   color: white;
 
