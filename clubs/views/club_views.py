@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView, TemplateView
+from django.views.generic import CreateView, ListView, TemplateView
 
 from views.shared.manager_required_mixin import ManagerRequiredMixin
 
+from ..forms.club import ClubMembershipForm
 from ..models.club import ClubMembership
 
 
@@ -22,3 +23,9 @@ class ClubMembershipListView(ManagerRequiredMixin, ListView):
     model = ClubMembership
     template_name = "clubmemberships.html"
     context_object_name = "memberships"
+
+
+class ClubMembershipCreateView(ManagerRequiredMixin, CreateView):
+    model = ClubMembership
+    template_name = "clubmembership_create.html"
+    form_class = ClubMembershipForm

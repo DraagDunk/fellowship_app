@@ -36,6 +36,9 @@
                     </td>
                 </tr>
             {% endfor %}
+            <tr>
+                <td><a href="{% url "member_create" %}">{% translate "Add person" %}</a></td>
+            </tr>
         </tbody>
     </table>
 {% endblock content %}

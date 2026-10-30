@@ -2,6 +2,7 @@ from uuid import uuid4
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -57,6 +58,7 @@ class ClubMembership(models.Model):
         verbose_name=_("person"),
         on_delete=models.CASCADE,
         related_name="membership",
+        blank=True,
     )
     club = models.ForeignKey(
         Club,
@@ -73,3 +75,6 @@ class ClubMembership(models.Model):
         return _("{name} of {club}").format(
             name=self.person.get_full_name(), club=self.club.name
         )
+
+    def get_absolute_url(self):
+        return reverse_lazy("members")
