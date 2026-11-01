@@ -4,6 +4,7 @@
         <a id="home-link" class="narrow" href="{% url "home_page" %}">{{ request.user.membership.club }}</a>
         <nav id="navigation">
             <a href="{% url "books" %}">{% translate "Books" %}</a>
+            <a href="{% url "password_change" %}">{% translate "Change password" %}</a>
             {% if request.user.is_authenticated %}
                 <form action="{% url "logout" %}" method="post">
                     {% csrf_token %}
