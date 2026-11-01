@@ -9,6 +9,15 @@
         <a class="home_page button" href="{% url "books" %}"><i class="fa-solid fa-book"></i></a>
         <a class="home_page button"
            href="{% url "voting_rounds" %}"><i class="fa-solid fa-square-poll-vertical"></i></a>
+        {% if club.signal_link %}
+            <a class="home_page button" href="{{ club.signal_link }}"><i class="fa-brands fa-signal-messenger"></i></a>
+        {% endif %}
+        {% if club.discord_link %}
+            <a class="home_page button" href="{{ club.discord_link }}"><i class="fa-brands fa-discord"></i></a>
+        {% endif %}
+        {% if club.facebook_link %}
+            <a class="home_page button" href="{{ club.facebook_link }}"><i class="fa-brands fa-facebook"></i></a>
+        {% endif %}
         {% if request.user.is_manager %}
             <a class="home_page button" href="{% url "members" %}"><i class="fa-solid fa-user"></i></a>
         {% endif %}

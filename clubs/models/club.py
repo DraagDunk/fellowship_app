@@ -22,6 +22,16 @@ class Club(models.Model):
         related_name="clubs",
     )
 
+    signal_link = models.URLField(
+        verbose_name=_("Signal link"), max_length=500, null=True, blank=True
+    )
+    discord_link = models.URLField(
+        verbose_name=_("Discord link"), max_length=500, null=True, blank=True
+    )
+    facebook_link = models.URLField(
+        verbose_name=_("Facebook link"), max_length=500, null=True, blank=True
+    )
+
     def __str__(self):
         return self.name
 
