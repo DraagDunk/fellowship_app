@@ -12,5 +12,6 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button class="big" type="submit">{% translate "Log in" %}</button>
+        <a class="password_reset_link" href="{% url "password_reset" %}">{% translate "I need a new password" %}</a>
     </form>
 {% endblock content %}
