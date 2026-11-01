@@ -22,6 +22,8 @@ class Club(models.Model):
         related_name="clubs",
     )
 
+    objects = ClubManager()
+
     def __str__(self):
         return self.name
 

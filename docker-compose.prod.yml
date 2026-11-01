@@ -24,7 +24,7 @@ services:
       timeout: 10s
 
   fellowship_app:
-    image: draagdunk/fellowship_app:latest
+    image: draagdunk/fellowship_app:latest-local
     container_name: app
     depends_on:
       fellowship_db:
