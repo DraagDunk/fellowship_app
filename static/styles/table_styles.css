@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+
+  td.row-low,
+  th.row-low {
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  td {
+    line-height: 2rem;
+
+    &.centered {
+      text-align: center;
+    }
+  }
+
+  i {
+    font-size: 1.5rem;
+
+    &.fa-circle-xmark {
+      color: red;
+    }
+
+    &.fa-circle-check {
+      color: green;
+    }
+  }
+}

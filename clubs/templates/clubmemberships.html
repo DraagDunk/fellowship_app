@@ -1,0 +1,44 @@
+{% extends "shared/base.html" %}
+{% load i18n humanize static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/table_styles.css" %}" />
+{% endblock head %}
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th class="row-high">{% translate "Name" %}</th>
+                <th class="row-low">{% translate "Email" %}</th>
+                <th class="row-low">{% translate "Last login" %}</th>
+                <th class="row-low">{% translate "Manager" %}</th>
+                <th class="row-high">{% translate "Active" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membership in memberships %}
+                <tr>
+                    <td class="row-high">{{ membership.person.get_full_name }}</td>
+                    <td class="row-low">{{ membership.person.email }}</td>
+                    <td class="row-low">{% if membership.person.last_login %}{{ membership.person.last_login|naturaltime }}{% endif %}</td>
+                    <td class="row-low centered">
+                        {% if membership.manager %}
+                            <i class="fa-regular fa-circle-check"></i>
+                        {% else %}
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        {% endif %}
+                    </td>
+                    <td class="row-high centered">
+                        {% if membership.person.is_active %}
+                            <i class="fa-regular fa-circle-check"></i>
+                        {% else %}
+                            <i class="fa-regular fa-circle-xmark"></i>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><a href="{% url "member_create" %}">{% translate "Add person" %}</a></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock content %}

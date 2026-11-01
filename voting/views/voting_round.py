@@ -10,13 +10,11 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DetailView, FormView, ListView
 
+from views.shared.manager_required_mixin import ManagerRequiredMixin
+
 from ..forms.voting_round import VotingRoundForm, VotingRoundVotingForm
 from ..models.book_suggestion import BookSuggestion, Vote
 from ..models.voting_round import VotingRound
-
-
-def is_manager(self: User):
-    return self.membership.manager
 
 
 def has_voted(self: User, voting_round: VotingRound):
@@ -30,17 +28,8 @@ def can_still_suggest(self: User, voting_round: VotingRound):
     )
 
 
-User.add_to_class("is_manager", is_manager)
 User.add_to_class("has_voted", has_voted)
 User.add_to_class("can_still_suggest", can_still_suggest)
-
-
-class ManagerRequiredMixin(LoginRequiredMixin):
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_manager():
-            return super().dispatch(request, *args, **kwargs)
-        else:
-            return self.handle_no_permission()
 
 
 class VotingRoundCreateView(ManagerRequiredMixin, CreateView):
