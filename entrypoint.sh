@@ -1,10 +1,13 @@
 #!/bin/sh
 
+# Set settings module env variable to allow django-admin to read settings
+ export DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE:-fellowship_app.settings}
+
 # Collect static files
-python3 manage.py collectstatic --no-input
+django-admin collectstatic --no-input
 
 # Run migrations
-python3 manage.py migrate
+django-admin migrate --no-input
 
 # Start server
-gunicorn --bind 0.0.0.0:8000 --workers 3 fellowship_app.wsgi:application
+exec gunicorn --bind 0.0.0.0:8000 --workers 3 fellowship_app.wsgi:application

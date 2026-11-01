@@ -1,5 +1,5 @@
 version = 1
-revision = 5
+revision = 3
 requires-python = "==3.14.*"
 
 [options]
@@ -126,7 +126,7 @@ wheels = [
 [[package]]
 name = "fellowship-app"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "asgiref" },
     { name = "django" },

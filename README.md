@@ -204,4 +204,10 @@ In the `data/` folder, there is a fixture containing a few users related to a cl
 docker compose exec fellowship_app python3 manage.py loaddata data/fellowship.json
 ```
 
+If using prod container then run the following command instead.
+
+```
+docker compose -f docker-compose.prod.yml exec -T -e DJANGO_SETTINGS_MODULE=fellowship_app.settings fellowship_app django-admin loaddata /app/data/fellowship.json
+```
+
 After this, you can log in with the username "gandalf" and the password "admin".
