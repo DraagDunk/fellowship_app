@@ -15,7 +15,6 @@ class VotingRoundForm(forms.ModelForm):
             "suggestions_per_user",
             "votes_per_user",
             "number_of_winners",
-            "club",
         )
         widgets = {
             "start_time": forms.DateTimeInput(
