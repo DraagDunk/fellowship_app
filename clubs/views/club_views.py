@@ -29,3 +29,7 @@ class ClubMembershipCreateView(ManagerRequiredMixin, CreateView):
     model = ClubMembership
     template_name = "clubmembership_create.html"
     form_class = ClubMembershipForm
+
+    def form_valid(self, form=None):
+        form.instance.club = self.request.user.membership.club
+        return super().form_valid(form)
