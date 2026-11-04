@@ -37,6 +37,10 @@ class VotingRoundCreateView(ManagerRequiredMixin, CreateView):
     template_name = "voting_round_create.html"
     form_class = VotingRoundForm
 
+    def form_valid(self, form=None):
+        form.instance.club = self.request.user.membership.club
+        return super().form_valid(form)
+
 
 class VotingRoundListView(LoginRequiredMixin, ListView):
     model = VotingRound

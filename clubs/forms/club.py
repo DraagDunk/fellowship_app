@@ -14,7 +14,8 @@ class ClubMembershipForm(forms.ModelForm):
 
     class Meta:
         model = ClubMembership
-        fields = ("club", "person", "manager")
+        fields = ("person", "manager")
+        widgets = {"person": forms.HiddenInput()}
 
     def clean(self):
         cleaned = super().clean()
