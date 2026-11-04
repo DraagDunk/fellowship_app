@@ -1,12 +1,12 @@
 {% extends "shared/error.html" %}
 {% load i18n %}
 {% block icon %}
-    <img src="https://clip.cafe/img16x9/you-have-no-power-here-s1.jpg"
-         alt="{% translate "Theoden looking old and happy." %}" />
+    <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/02/gimli-drunk.jpg"
+         alt="{% translate "Gimli looking drunk." %}" />
 {% endblock icon %}
 {% block headline %}
-    You have no power here!
+    {% translate "The dwarf got drunk." %}
 {% endblock headline %}
 {% block message %}
-    {% translate "You are not authorized to access this page." %}
+    {% translate "Something went wrong, but we are probably working on it." %}
 {% endblock message %}
