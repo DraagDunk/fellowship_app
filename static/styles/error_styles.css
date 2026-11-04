@@ -1,0 +1,27 @@
+.error.page {
+  align-items: center;
+
+  .content {
+    width: fit-content;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.error_icon_container {
+  overflow: hidden;
+  border-radius: 2rem;
+  height: 250px;
+
+  img {
+    width: 400px;
+  }
+}
+
+.error_message_container {
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
