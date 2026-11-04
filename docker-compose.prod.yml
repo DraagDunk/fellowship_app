@@ -37,6 +37,7 @@ services:
     volumes:
       - static:/app/static
       - staticfiles:/app/staticfiles
+      - ./data:/app/data
 
 volumes:
   fellowship_app-db:

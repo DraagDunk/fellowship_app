@@ -28,12 +28,16 @@ DEBUG = os.environ.get("DEBUG", default="0") != "0"
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
 
-CSRF_TRUSTED_ORIGINS = os.environ.get("DJANGO_TRUSTED_ORIGINS", "http://127.0.0.1").split(",")
+CSRF_TRUSTED_ORIGINS = os.environ.get(
+    "DJANGO_TRUSTED_ORIGINS", "http://127.0.0.1"
+).split(",")
 
 WHITENOISE_USE_FINDERS = DEBUG
 WHITENOISE_AUTOREFRESH = DEBUG
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOG_LEVEL = os.environ.get("DJANGO_LOG_LEVEL", "WARNING")
 
 
 # Application definition
@@ -147,3 +151,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static").replace("\\", "/")]
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "structured": {
+            "format": "{asctime} {levelname} {name} {module}:{lineno} {message}",
+            "style": "{",
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "structured",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": LOG_LEVEL,
+    },
+    # Add loggers we want in the future
+}
