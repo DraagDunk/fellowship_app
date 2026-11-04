@@ -4,6 +4,7 @@
   .content {
     width: fit-content;
     height: fit-content;
+    max-width: calc(100% - 2rem);
 
     display: flex;
     flex-direction: column;
@@ -14,10 +15,13 @@
 .error_icon_container {
   overflow: hidden;
   border-radius: 2rem;
-  height: 250px;
+  width: 400px;
+  max-width: 100%;
+
+  aspect-ratio: 4 / 2.5;
 
   img {
-    width: 400px;
+    width: 100%;
   }
 }
 
