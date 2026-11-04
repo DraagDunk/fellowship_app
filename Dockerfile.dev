@@ -18,10 +18,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-install-project
 
-RUN useradd -m -r appuser && \
-    mkdir -p /app/static /fellowship-dev && \
-    chown -R appuser /app && \
-    chown -R appuser /fellowship-dev
+ARG UID=1000
+ARG GID=1000
+
+RUN useradd -m -r -u ${UID} appuser &&\
+    mkdir -p /app/staticfiles /app/static /log /fellowship-dev &&\
+    chown -R ${UID}:${GID} /app/staticfiles /app/static /log /fellowship-dev
 
 COPY --chown=appuser:appuser . .
 

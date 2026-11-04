@@ -23,6 +23,8 @@ COPY . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev --no-editable
 
+RUN mkdir -p /log
+
 RUN python manage.py compilemessages
 
 # PRODUCTION STAGE
@@ -34,13 +36,16 @@ ENV PATH="/opt/venv/bin:$PATH" \
 
 WORKDIR /app
 
-RUN useradd -m -r appuser
+ARG UID=1000
+ARG GID=1000
+
+RUN useradd -m -r -u ${UID} appuser
 
 COPY --from=builder /opt/venv /opt/venv
-COPY --from=builder --chown=appuser:appuser /app .
+COPY --from=builder --chown=${UID}:${GID} /app .
 
-RUN mkdir -p /app/staticfiles /app/static &&\
-    chown -R appuser:appuser /app/staticfiles /app/static
+RUN mkdir -p /app/staticfiles /app/static /log &&\
+    chown -R ${UID}:${GID} /app/staticfiles /app/static /log
 
 USER appuser
 
