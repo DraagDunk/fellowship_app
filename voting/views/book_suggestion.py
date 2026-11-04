@@ -6,6 +6,7 @@ from django.views.generic import CreateView
 
 from books.models import BookCore
 
+from ..forms.book_suggestion import BookSuggestionForm
 from ..models.book_suggestion import BookSuggestion
 from ..models.voting_round import VotingRound
 
@@ -13,8 +14,7 @@ from ..models.voting_round import VotingRound
 class BookSuggestionCreateView(LoginRequiredMixin, CreateView):
     model = BookSuggestion
     template_name = "book_suggestion_create.html"
-
-    fields = ("book",)
+    form_class = BookSuggestionForm
 
     def get(self, request, *args, **kwargs):
         if (
