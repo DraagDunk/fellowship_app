@@ -1,0 +1,12 @@
+{% extends "shared/error.html" %}
+{% load i18n %}
+{% block icon %}
+    <img src="https://gifrific.com/wp-content/uploads/2013/02/I-have-no-memory-of-this-place-Gandalf-Lord-of-the-Rings.gif"
+         alt="{% translate "Gandalf looking confused." %}" />
+{% endblock icon %}
+{% block headline %}
+    I have no memory of this place ...
+{% endblock headline %}
+{% block message %}
+    {% translate "The content you are looking for could not be found." %}
+{% endblock message %}

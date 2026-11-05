@@ -1,0 +1,12 @@
+{% extends "shared/error.html" %}
+{% load i18n %}
+{% block icon %}
+    <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2023/02/gimli-drunk.jpg"
+         alt="{% translate "Gimli looking drunk." %}" />
+{% endblock icon %}
+{% block headline %}
+    {% translate "The dwarf got drunk." %}
+{% endblock headline %}
+{% block message %}
+    {% translate "Something went wrong, but we are probably working on it." %}
+{% endblock message %}

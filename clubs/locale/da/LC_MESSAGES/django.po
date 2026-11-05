@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 15:20+0000\n"
+"POT-Creation-Date: 2026-11-04 21:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,19 +22,31 @@ msgstr ""
 msgid "clubs"
 msgstr "klubber"
 
-#: models/club.py:13
+#: forms/club.py:9 templates/clubmemberships.html:11
+msgid "Email"
+msgstr "Email"
+
+#: forms/club.py:11
+msgid "First name"
+msgstr "Fornavn"
+
+#: forms/club.py:13
+msgid "Last name"
+msgstr "Efternavn"
+
+#: models/club.py:14
 msgid "UUID"
 msgstr "UUID"
 
-#: models/club.py:15
+#: models/club.py:16
 msgid "name"
 msgstr "navn"
 
-#: models/club.py:19
+#: models/club.py:20
 msgid "members"
 msgstr "medlemmer"
 
-#: models/club.py:59
+#: models/club.py:58
 msgid "person"
 msgstr "person"
 
@@ -46,36 +58,131 @@ msgstr "klub"
 msgid "manager"
 msgstr "leder"
 
-#: templates/homepage.html:9
-#, python-format
-msgid "Hello and welcome to %(name)s!"
-msgstr "Hej og velkommen til %(name)s!"
+#: models/club.py:75
+#, python-brace-format
+msgid "{name} of {club}"
+msgstr "{name} fra {club}"
 
-#: templates/homepage.html:14
-msgid "Managers"
-msgstr "Ledere"
+#: templates/401.html:5
+msgid "Theoden looking old and happy."
+msgstr "Theoden der ser gammel og glad ud."
 
-#: templates/homepage.html:22
-msgid "Members"
-msgstr "Medlemmer"
+#: templates/401.html:11
+msgid "You are not authorized to access this page."
+msgstr "Du er ikke autoriseret til at tilgå denne side."
 
-#: templates/homepage.html:30
+#: templates/403.html:5
+msgid "Gandalf telling you, that you shall not pass."
+msgstr "Gandalf der fortæller dig, at du ikke må passere."
+
+#: templates/403.html:11
+msgid "You are not allowed to view this content."
+msgstr "Du må ikke se dette indhold."
+
+#: templates/404.html:5
+msgid "Gandalf looking confused."
+msgstr "Gandalf der ser forvirret ud."
+
+#: templates/404.html:11
+msgid "The content you are looking for could not be found."
+msgstr "Indholdet du leder efter kunne ikke findes."
+
+#: templates/500.html:5
+msgid "Gimli looking drunk."
+msgstr "Gimli der ser beruset ud."
+
+#: templates/500.html:8
+msgid "The dwarf got drunk."
+msgstr "Dværgen blev fuld."
+
+#: templates/500.html:11
+msgid "Something went wrong, but we are probably working on it."
+msgstr "Noget gik galt, men vi arbejder sikkert på det."
+
+#: templates/clubmembership_create.html:7
+msgid "Save"
+msgstr "Gem"
+
+#: templates/clubmemberships.html:10
+msgid "Name"
+msgstr "Navn"
+
+#: templates/clubmemberships.html:12
+msgid "Last login"
+msgstr "Seneste log ind"
+
+#: templates/clubmemberships.html:13
+msgid "Manager"
+msgstr "Leder"
+
+#: templates/clubmemberships.html:14
+msgid "Active"
+msgstr "Aktiv"
+
+#: templates/clubmemberships.html:40
+msgid "Add person"
+msgstr "Tilføj person"
+
+#: templates/homepage.html:17
 msgid "You can currently suggest books for a vote."
 msgstr "Du kan i øjeblikket foreslå bøger til en afstemning."
 
-#: templates/homepage.html:33
+#: templates/homepage.html:20
 msgid "You can currently vote."
 msgstr "Du kan i øjeblikket stemme."
 
-#: templates/homepage.html:36
+#: templates/homepage.html:23
 msgid "See results from most recent vote!"
 msgstr "Se resultater fra seneste afstemning!"
 
-#: templates/registration/login.html:4 templates/registration/login.html:7
-#: templates/registration/login.html:11
+#: templates/registration/login.html:4 templates/registration/login.html:14
+#: templates/registration/password_change_done.html:4
+#: templates/registration/password_change_form.html:4
+#: templates/registration/password_reset_complete.html:4
+#: templates/registration/password_reset_complete.html:12
+#: templates/registration/password_reset_confirm.html:4
+#: templates/registration/password_reset_done.html:4
+#: templates/registration/password_reset_form.html:4
 msgid "Log in"
 msgstr "Log ind"
+
+#: templates/registration/login.html:15
+msgid "I need a new password"
+msgstr "Jeg skal bruge et nyt kodeord"
 
 #: templates/registration/logout.html:4
 msgid "Thank you for logging out, bye!"
 msgstr "Tak for at logge ud, farvel!"
+
+#: templates/registration/password_change_done.html:11
+msgid "Your password was changed."
+msgstr "Dit kodeord blev ændret."
+
+#: templates/registration/password_change_form.html:14
+msgid "Change password"
+msgstr "Skift kodeord"
+
+#: templates/registration/password_reset_complete.html:11
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr "Dit kodeord blev sat. Du kan nu logge ind."
+
+#: templates/registration/password_reset_confirm.html:14
+#: templates/registration/password_reset_form.html:14
+msgid "Reset password"
+msgstr "Nulstil kodeord"
+
+#: templates/registration/password_reset_done.html:11
+msgid ""
+"We’ve emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Vi har sendt dig en mail med instruktioner til at sætte dit kodeord, hvis "
+"en konto findes med emailadressen du indtastede. Du bør modtage den snart."
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"If you don’t receive an email, please make sure you’ve entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Hvis du ikke modtager en mail skal du sikre dig, at du har tastet den korrekte "
+"adresse ind, og tjekke din spammappe."

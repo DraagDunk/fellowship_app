@@ -1,0 +1,12 @@
+{% extends "shared/error.html" %}
+{% load i18n %}
+{% block icon %}
+    <img src="https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/23003314/4k_fellowship_movie_screencaps.com_23524.jpg?w=1600&h=1200&fit=crop"
+         alt="{% translate "Gandalf telling you, that you shall not pass." %}" />
+{% endblock icon %}
+{% block headline %}
+    You shall not pass!
+{% endblock headline %}
+{% block message %}
+    {% translate "You are not allowed to view this content." %}
+{% endblock message %}

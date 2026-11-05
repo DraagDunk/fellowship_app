@@ -1,0 +1,22 @@
+{% extends "shared/base.html" %}
+{% load static %}
+{% block page_class %}error{% endblock page_class %}
+{% block head %}
+    <link rel="stylesheet" href="{% static "styles/error_styles.css" %}">
+{% endblock head %}
+{% block content %}
+    <div class="error_icon_container">
+        {% block icon %}
+        {% endblock icon %}
+    </div>
+    <div class="error_message_container">
+        <h1>
+            {% block headline %}
+            {% endblock headline %}
+        </h1>
+        <p>
+            {% block message %}
+            {% endblock message %}
+        </p>
+    </div>
+{% endblock content %}

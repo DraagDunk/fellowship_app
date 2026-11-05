@@ -1,0 +1,12 @@
+{% extends "shared/error.html" %}
+{% load i18n %}
+{% block icon %}
+    <img src="https://clip.cafe/img16x9/you-have-no-power-here-s1.jpg"
+         alt="{% translate "Theoden looking old and happy." %}" />
+{% endblock icon %}
+{% block headline %}
+    You have no power here!
+{% endblock headline %}
+{% block message %}
+    {% translate "You are not authorized to access this page." %}
+{% endblock message %}
