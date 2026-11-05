@@ -16,7 +16,7 @@ class BookCore(models.Model):
     genres = models.ManyToManyField(
         Genre, verbose_name=_("Genres"), related_name="books"
     )
-    series_number = models.PositiveIntegerField()
+    series_number = models.PositiveIntegerField(null=True, blank=True)
 
     @property
     def original_version(self):
@@ -66,9 +66,9 @@ class BookVersion(models.Model):
         related_name="books",
     )
     cover_image = models.URLField(_("Cover image URL"), max_length=500)
-    information_link = models.URLField(_("Information URL"), max_length=500)
-    seller_link = models.URLField(_("Seller URL"), max_length=500)
-    library_link = models.URLField(_("Library URL"), max_length=500)
+    information_link = models.URLField(_("Information URL"), max_length=500, blank=True)
+    seller_link = models.URLField(_("Seller URL"), max_length=500, blank=True)
+    library_link = models.URLField(_("Library URL"), max_length=500, blank=True)
     language = models.CharField(
         _("Language"), max_length=2, choices=LanguageCodes.choices
     )
