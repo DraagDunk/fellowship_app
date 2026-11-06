@@ -77,6 +77,7 @@ a.button {
   align-items: center;
   background-color: var(--color-primary);
   color: white;
+  padding: 0.5rem;
 
   text-align: center;
   border-radius: 0.5rem;
@@ -103,6 +104,46 @@ a.button {
 
     &:hover {
       transform: scale(1.1);
+    }
+  }
+}
+
+div.page_options {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-header-bg);
+
+  display: flex;
+
+  button,
+  a.button {
+    border-radius: 0;
+    width: 100%;
+
+    &:not(:last-of-type) {
+      margin-right: 0.2rem;
+    }
+  }
+
+  @media (min-width: 800px) {
+    right: 0;
+    left: unset;
+
+    display: block;
+
+    width: fit-content;
+    height: fit-content;
+    background-color: unset;
+
+    button,
+    a.button {
+      margin: 1rem;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 2rem;
+      font-size: 2rem;
     }
   }
 }
