@@ -35,8 +35,8 @@ services:
     env_file:
       - .env
     volumes:
-      - static:/app/static
-      - staticfiles:/app/staticfiles
+      - static:/app/src/static
+      - staticfiles:/app/src/staticfiles
       - ./data:/app/data
 
 volumes:

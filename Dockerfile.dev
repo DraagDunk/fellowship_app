@@ -3,6 +3,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.13.4 /uv /uvx /bin/
 RUN python -m pip install --upgrade "pip>=26.2.2"
 
 ENV PATH="/opt/venv/bin:$PATH" \
+    PYTHONPATH="/app/src" \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     UV_LINK_MODE=copy \
@@ -22,8 +23,8 @@ ARG UID=1000
 ARG GID=1000
 
 RUN useradd -m -r -u ${UID} appuser &&\
-    mkdir -p /app/staticfiles /app/static /log /fellowship-dev &&\
-    chown -R ${UID}:${GID} /app/staticfiles /app/static /log /fellowship-dev
+    mkdir -p /app/src/staticfiles /app/src/static /log /fellowship-dev &&\
+    chown -R ${UID}:${GID} /app/src/staticfiles /app/src/static /log /fellowship-dev
 
 COPY --chown=appuser:appuser . .
 
