@@ -4,7 +4,9 @@ COPY --from=ghcr.io/astral-sh/uv:0.13.4 /uv /uvx /bin/
 RUN python -m pip install --upgrade "pip>=26.2.2"
 
 ENV PATH="/opt/venv/bin:$PATH" \
+    PYTHONPATH="/app/src" \
     PYTHONUNBUFFERED=1 \
+    UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
     UV_PROJECT_ENVIRONMENT=/opt/venv
 
@@ -20,17 +22,16 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 COPY . /app
 
+RUN python manage.py compilemessages
+
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --locked --no-dev --no-editable
-
-RUN mkdir -p /log
-
-RUN python manage.py compilemessages
 
 # PRODUCTION STAGE
 FROM python:3.14-slim
 
 ENV PATH="/opt/venv/bin:$PATH" \
+    PYTHONPATH="/app/src" \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
@@ -42,10 +43,13 @@ ARG GID=1000
 RUN useradd -m -r -u ${UID} appuser
 
 COPY --from=builder /opt/venv /opt/venv
-COPY --from=builder --chown=${UID}:${GID} /app .
+COPY --from=builder --chown=appuser:appuser /app/entrypoint.sh /app/entrypoint.sh
+COPY --from=builder --chown=appuser:appuser /app/src/templates /app/src/templates
+COPY --from=builder --chown=appuser:appuser /app/src/static /app/src/static
 
-RUN mkdir -p /app/staticfiles /app/static /log &&\
-    chown -R ${UID}:${GID} /app/staticfiles /app/static /log
+RUN mkdir -p /app/src/staticfiles &&\
+    chmod +x /app/entrypoint.sh &&\
+    chown -R appuser:appuser /app/src/staticfiles
 
 USER appuser
 
