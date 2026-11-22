@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
-from ..models.club import ClubMembership
+from ..models.club import ClubMembership, EmailTemplate
 
 
 class ClubMembershipForm(forms.ModelForm):
@@ -35,3 +35,9 @@ class ClubMembershipForm(forms.ModelForm):
         cleaned.pop("email")
 
         return cleaned
+
+class WelcomeEmailForm(forms.ModelForm):
+    class Meta:
+        model = EmailTemplate
+        fields = ["subject", "body"]
+

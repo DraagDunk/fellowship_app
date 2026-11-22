@@ -78,3 +78,40 @@ class ClubMembership(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy("members")
+
+class EmailTemplate(models.Model):
+    DEFAULT_WELCOME_SUBJECT = "Velkommen til [[CLUB_NAME]]"
+    DEFAULT_WELCOME_BODY = (
+                    "Hej [[FIRST_NAME]],\n\n"
+                    "Velkommen til [[CLUB_NAME]].\n\n"
+                    "Opret dit password ved at besøge dette link:\n[[SET_PASSWORD_URL]]\n"
+                    "Linket virker i et par dage.\n\n"
+                    "Vi glæder os til at se dig til vores møder!\n\n"
+                    "Venlig Hilsen,\n"
+                    "[[CLUB_NAME]]"
+                )
+    class EmailTemplateType(models.TextChoices):
+        WELCOME = "welcome", "Velkommen"
+
+    club = models.ForeignKey(
+        Club,
+        verbose_name=_("Email Templates"),
+        on_delete=models.CASCADE,
+        related_name="email_templates"
+    )
+
+    template_type = models.CharField(
+        max_length=10,
+        choices=EmailTemplateType.choices
+    )
+
+    # Does not accept django syntax. Only accepts defined replace tokens
+    subject = models.CharField(max_length=255)
+
+    # Does not accept django syntax. Only accepts defined replace tokens
+    body = models.TextField(max_length=2000)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["club", "template_type"], name="unqiue_club_template_type")
+        ]

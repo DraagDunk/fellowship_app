@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, ListView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
 from views.shared.manager_required_mixin import ManagerRequiredMixin
 
-from ..forms.club import ClubMembershipForm
+from ..forms.club import ClubMembershipForm, EmailTemplate, WelcomeEmailForm
 from ..models.club import ClubMembership
 
 
@@ -33,3 +34,20 @@ class ClubMembershipCreateView(ManagerRequiredMixin, CreateView):
     def form_valid(self, form=None):
         form.instance.club = self.request.user.membership.club
         return super().form_valid(form)
+
+class WelcomeEmailView(ManagerRequiredMixin, UpdateView):
+    model = EmailTemplate
+    template_name = "welcome_email.html"
+    form_class = WelcomeEmailForm
+
+    def get_object(self, queryset=None):
+        club = self.request.user.clubs.first()
+
+        obj = EmailTemplate.objects.get(
+            club=club,
+        )
+
+        return obj
+
+    def get_success_url(self):
+        return reverse_lazy("club_welcome_email")
