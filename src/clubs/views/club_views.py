@@ -5,8 +5,8 @@ from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
 from views.shared.manager_required_mixin import ManagerRequiredMixin
 
-from ..forms.club import ClubMembershipForm, EmailTemplate, WelcomeEmailForm
-from ..models.club import ClubMembership
+from ..forms.club import ClubMembershipForm, ClubWelcomeEmailForm
+from ..models.club import ClubEmailTemplate, ClubMembership
 
 
 class HomePageView(LoginRequiredMixin, TemplateView):
@@ -36,15 +36,18 @@ class ClubMembershipCreateView(ManagerRequiredMixin, CreateView):
         form.instance.club = self.request.user.membership.club
         return super().form_valid(form)
 
-class WelcomeEmailView(ManagerRequiredMixin, UpdateView):
-    model = EmailTemplate
+class ClubWelcomeEmailView(ManagerRequiredMixin, UpdateView):
+    model = ClubEmailTemplate
     template_name = "welcome_email.html"
-    form_class = WelcomeEmailForm
+    form_class = ClubWelcomeEmailForm
 
     def get_object(self, queryset=None):
         club = self.request.user.membership.club
 
-        template = EmailTemplate.objects.get(club=club)
+        template = ClubEmailTemplate.objects.get(
+            club=club, 
+            template_type=ClubEmailTemplate.EmailTemplateType.WELCOME
+        )
 
         return template
 

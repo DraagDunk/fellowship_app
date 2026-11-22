@@ -79,7 +79,7 @@ class ClubMembership(models.Model):
     def get_absolute_url(self):
         return reverse_lazy("members")
 
-class EmailTemplate(models.Model):
+class ClubEmailTemplate(models.Model):
     DEFAULT_WELCOME_SUBJECT = "Velkommen til [[CLUB_NAME]]"
     DEFAULT_WELCOME_BODY = (
                     "Hej [[FIRST_NAME]],\n\n"
@@ -100,7 +100,7 @@ class EmailTemplate(models.Model):
     }
 
 
-    class EmailTemplateType(models.TextChoices):
+    class ClubEmailTemplateType(models.TextChoices):
         WELCOME = "welcome", "Velkommen"
 
     club = models.ForeignKey(
@@ -112,7 +112,7 @@ class EmailTemplate(models.Model):
 
     template_type = models.CharField(
         max_length=10,
-        choices=EmailTemplateType.choices
+        choices=ClubEmailTemplateType.choices
     )
 
     # Does not accept django syntax. Only accepts defined replace tokens
@@ -125,3 +125,11 @@ class EmailTemplate(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["club", "template_type"], name="unqiue_club_template_type")
         ]
+
+    @classmethod
+    def get_or_create_welcome(cls, club):
+        return cls.objects.get_or_create(
+            club=club,
+            template_type=cls.ClubEmailTemplateType.WELCOME,
+            defaults={"subject": cls.DEFAULT_WELCOME_SUBJECT, "body": cls.DEFAULT_WELCOME_BODY},
+        )
