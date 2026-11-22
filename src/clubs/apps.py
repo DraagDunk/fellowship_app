@@ -5,3 +5,6 @@ from django.utils.translation import gettext_lazy as _
 class ClubsConfig(AppConfig):
     name = "clubs"
     verbose_name = _("clubs")
+
+    def ready(self):
+        from . import signals
