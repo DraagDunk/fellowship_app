@@ -46,7 +46,7 @@ class ClubWelcomeEmailView(ManagerRequiredMixin, UpdateView):
 
         template = ClubEmailTemplate.objects.get(
             club=club, 
-            template_type=ClubEmailTemplate.EmailTemplateType.WELCOME
+            template_type=ClubEmailTemplate.ClubEmailTemplateType.WELCOME
         )
 
         return template
