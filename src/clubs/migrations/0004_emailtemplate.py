@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="EmailTemplate",
+            name="ClubEmailTemplate",
             fields=[
                 (
                     "id",

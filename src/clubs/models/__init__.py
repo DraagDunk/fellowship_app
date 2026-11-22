@@ -1,3 +1,3 @@
 from .club import Club, ClubMembership
 
-__all__ = ["Club", "ClubMembership"]
+__all__ = ["Club", "ClubMembership", "ClubEmailTemplate"]

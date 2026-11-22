@@ -48,6 +48,14 @@ Compiling translations at runtime is a pain in the ass, so please do this yourse
 uv run manage.py compilemessages
 ```
 
+#### Connect to DB
+
+Run the following command if postgresql-client is installed:
+
+```
+sudo -U postgres psql -h localhost -p 5432 -U postgres -d default_db
+```
+
 ## Installing new dependencies
 
 This gives you a virtual environment with the correct python version and all dependencies installed.

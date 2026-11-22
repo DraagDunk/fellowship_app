@@ -4,9 +4,9 @@ from django.db import migrations
 
 def seed_welcome_templates(apps, schema_editor):
     Club = apps.get_model("clubs", "Club")
-    EmailTemplate = apps.get_model("clubs", "EmailTemplate")
+    ClubEmailTemplate = apps.get_model("clubs", "ClubEmailTemplate")
     for club in Club.objects.all():
-        EmailTemplate.objects.get_or_create(
+        ClubEmailTemplate.objects.get_or_create(
             club=club,
             template_type="welcome",
             defaults={

@@ -15,6 +15,8 @@ if [ "$DATA_IMPORT" = "1" ]; then
   if [ ! -e "/fellowship-dev/data-imported" ]; then
     echo "Importing test data"
     python3 manage.py loaddata data/fellowship.json
+    echo "Create welcome email templates for all clubs"
+    python3 manage.py seed_welcome_email_templates
     touch /fellowship-dev/data-imported
   else
     echo "Test data already imported"

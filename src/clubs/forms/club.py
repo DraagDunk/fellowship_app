@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
-from ..models.club import ClubMembership, EmailTemplate
+from ..models.club import ClubMembership, ClubEmailTemplate
 
 
 class ClubMembershipForm(forms.ModelForm):
@@ -38,9 +38,9 @@ class ClubMembershipForm(forms.ModelForm):
 
         return cleaned
 
-class WelcomeEmailForm(forms.ModelForm):
+class ClubWelcomeEmailForm(forms.ModelForm):
     class Meta:
-        model = EmailTemplate
+        model = ClubEmailTemplate
         fields = ["subject", "body"]
 
     VALID_TOKENS_REGULAR_EXPRESSION = re.compile(r"\[\[(.*?)\]\]", re.DOTALL)
@@ -49,26 +49,26 @@ class WelcomeEmailForm(forms.ModelForm):
 
     @staticmethod
     def validate_text(field, text):
-        if WelcomeEmailForm.DJANGO_SYNTAX_REGULAR_EXPRESSION.search(text):
+        if ClubWelcomeEmailForm.DJANGO_SYNTAX_REGULAR_EXPRESSION.search(text):
             raise forms.ValidationError(
                 _("The {field} contains an illegal block structure. Please remove it. Illegal structures: {blocks}").format(
                     field=field,
-                    blocks=", ".join(WelcomeEmailForm.ILLEGAL_STRUCTURES),
+                    blocks=", ".join(ClubWelcomeEmailForm.ILLEGAL_STRUCTURES),
                 )
             )
-        for token in WelcomeEmailForm.VALID_TOKENS_REGULAR_EXPRESSION.findall(text):
-            if token not in EmailTemplate.TOKENS:
+        for token in ClubWelcomeEmailForm.VALID_TOKENS_REGULAR_EXPRESSION.findall(text):
+            if token not in ClubEmailTemplate.TOKENS:
                 raise forms.ValidationError(
                     _("The {field} contains an illegal token '{token}'. Please remove it. Legal tokens: {legal}").format(
                         field=field,
                         token=token,
-                        legal=", ".join(sorted(EmailTemplate.TOKENS))
+                        legal=", ".join(sorted(ClubEmailTemplate.TOKENS))
                     )
                 )
         return text
 
     def clean_subject(self):
-        return WelcomeEmailForm.validate_text("subject", self.cleaned_data["subject"])
+        return ClubWelcomeEmailForm.validate_text("subject", self.cleaned_data["subject"])
 
     def clean_body(self):
-        return WelcomeEmailForm.validate_text("body", self.cleaned_data["body"])
+        return ClubWelcomeEmailForm.validate_text("body", self.cleaned_data["body"])
