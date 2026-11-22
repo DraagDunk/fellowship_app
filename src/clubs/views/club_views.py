@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.forms import ValidationError
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
@@ -41,13 +42,11 @@ class WelcomeEmailView(ManagerRequiredMixin, UpdateView):
     form_class = WelcomeEmailForm
 
     def get_object(self, queryset=None):
-        club = self.request.user.clubs.first()
+        club = self.request.user.membership.club
 
-        obj = EmailTemplate.objects.get(
-            club=club,
-        )
+        template = EmailTemplate.objects.get(club=club)
 
-        return obj
+        return template
 
     def get_success_url(self):
         return reverse_lazy("club_welcome_email")

@@ -35,7 +35,7 @@ add-bounds = "exact"
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "fellowship_app.settings"
-python_path = ["src"]
+pythonpath = ["src"]
 python_files = ["test_*.py", "*_tests.py"]
 
 [tool.ruff.lint]
