@@ -101,7 +101,7 @@ class ClubEmailTemplate(models.Model):
 
 
     class ClubEmailTemplateType(models.TextChoices):
-        WELCOME = "welcome", "Velkommen"
+        WELCOME = "welcome"
 
     club = models.ForeignKey(
         Club,
@@ -109,6 +109,8 @@ class ClubEmailTemplate(models.Model):
         on_delete=models.CASCADE,
         related_name="email_templates"
     )
+
+    objects = ClubManager()
 
     template_type = models.CharField(
         max_length=10,
