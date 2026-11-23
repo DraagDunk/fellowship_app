@@ -118,6 +118,16 @@ To upgrade all dependencies run
 uv lock --upgrade && uv sync
 ```
 
+### Update translations
+
+To update translations, go to the root directory of the django app that you wish to update translations for and run the following command:
+
+```
+uv run python ../../manage.py makemessages -l da
+```
+
+Then edit the *.po file that was updated.
+
 ## Environment variables
 
 Here you can read about the environment variables used by the docker container and their default values.
