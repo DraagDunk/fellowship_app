@@ -105,7 +105,7 @@ class ClubEmailTemplate(models.Model):
 
     club = models.ForeignKey(
         Club,
-        verbose_name=_("Email Templates"),
+        verbose_name=_("club"),
         on_delete=models.CASCADE,
         related_name="email_templates"
     )
@@ -114,14 +114,21 @@ class ClubEmailTemplate(models.Model):
 
     template_type = models.CharField(
         max_length=10,
-        choices=ClubEmailTemplateType.choices
+        choices=ClubEmailTemplateType.choices,
+        verbose_name=_("Type")
     )
 
     # Does not accept django syntax. Only accepts defined replace tokens
-    subject = models.CharField(max_length=255)
+    subject = models.CharField(
+        max_length=255,
+        verbose_name=_("Subject")
+    )
 
     # Does not accept django syntax. Only accepts defined replace tokens
-    body = models.TextField(max_length=2000)
+    body = models.TextField(
+        max_length=2000,
+        verbose_name=_("Body")
+    )
 
     class Meta:
         constraints = [

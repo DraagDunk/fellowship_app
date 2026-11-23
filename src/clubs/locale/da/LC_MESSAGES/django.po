@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 21:08+0000\n"
+"POT-Creation-Date: 2026-11-23 17:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,17 +22,33 @@ msgstr ""
 msgid "clubs"
 msgstr "klubber"
 
-#: forms/club.py:9 templates/clubmemberships.html:11
+#: forms/club.py:11 templates/clubmemberships.html:11
 msgid "Email"
 msgstr "Email"
 
-#: forms/club.py:11
+#: forms/club.py:13
 msgid "First name"
 msgstr "Fornavn"
 
-#: forms/club.py:13
+#: forms/club.py:15
 msgid "Last name"
 msgstr "Efternavn"
+
+#: forms/club.py:54
+#, python-brace-format
+msgid ""
+"The {field} contains an illegal block structure. Please remove it. Illegal "
+"structures: {blocks}"
+msgstr "Feltet {field} indeholder en ugyldig blok struktur. Fjern den venligst. "
+"Ugyldig strukturer: {blocks}"
+
+#: forms/club.py:62
+#, python-brace-format
+msgid ""
+"The {field} contains an illegal token '{token}'. Please remove it. Legal "
+"tokens: {legal}"
+msgstr "Feltet {field} indeholder en ugyldig token '{token}'. Fjern den venligst. "
+"Gyldige tokens: {legal}"
 
 #: models/club.py:14
 msgid "UUID"
@@ -50,7 +66,7 @@ msgstr "medlemmer"
 msgid "person"
 msgstr "person"
 
-#: models/club.py:65
+#: models/club.py:65 models/club.py:108
 msgid "club"
 msgstr "klub"
 
@@ -62,6 +78,18 @@ msgstr "leder"
 #, python-brace-format
 msgid "{name} of {club}"
 msgstr "{name} fra {club}"
+
+#: models/club.py:118
+msgid "Type"
+msgstr "Type"
+
+#: models/club.py:124
+msgid "Subject"
+msgstr "Emne"
+
+#: models/club.py:130
+msgid "Body"
+msgstr "Brødtekst"
 
 #: templates/401.html:5
 msgid "Theoden looking old and happy."
@@ -99,7 +127,7 @@ msgstr "Dværgen blev fuld."
 msgid "Something went wrong, but we are probably working on it."
 msgstr "Noget gik galt, men vi arbejder sikkert på det."
 
-#: templates/clubmembership_create.html:7
+#: templates/clubmembership_create.html:7 templates/welcome_email.html:7
 msgid "Save"
 msgstr "Gem"
 
@@ -123,15 +151,15 @@ msgstr "Aktiv"
 msgid "Add person"
 msgstr "Tilføj person"
 
-#: templates/homepage.html:17
+#: templates/homepage.html:18
 msgid "You can currently suggest books for a vote."
 msgstr "Du kan i øjeblikket foreslå bøger til en afstemning."
 
-#: templates/homepage.html:20
+#: templates/homepage.html:21
 msgid "You can currently vote."
 msgstr "Du kan i øjeblikket stemme."
 
-#: templates/homepage.html:23
+#: templates/homepage.html:24
 msgid "See results from most recent vote!"
 msgstr "Se resultater fra seneste afstemning!"
 
@@ -176,13 +204,13 @@ msgid ""
 "We’ve emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
 msgstr ""
-"Vi har sendt dig en mail med instruktioner til at sætte dit kodeord, hvis "
-"en konto findes med emailadressen du indtastede. Du bør modtage den snart."
+"Vi har sendt dig en mail med instruktioner til at sætte dit kodeord, hvis en "
+"konto findes med emailadressen du indtastede. Du bør modtage den snart."
 
 #: templates/registration/password_reset_done.html:12
 msgid ""
 "If you don’t receive an email, please make sure you’ve entered the address "
 "you registered with, and check your spam folder."
 msgstr ""
-"Hvis du ikke modtager en mail skal du sikre dig, at du har tastet den korrekte "
-"adresse ind, og tjekke din spammappe."
+"Hvis du ikke modtager en mail skal du sikre dig, at du har tastet den "
+"korrekte adresse ind, og tjekke din spammappe."
