@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "template_type",
-                    models.CharField(choices=[("welcome", "Velkommen")], max_length=10),
+                    models.CharField(choices=["welcome"], max_length=10),
                 ),
                 ("subject", models.CharField(max_length=255)),
                 ("body", models.TextField(max_length=2000)),
