@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 17:47+0000\n"
+"POT-Creation-Date: 2026-11-24 18:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,8 @@ msgstr "Efternavn"
 msgid ""
 "The {field} contains an illegal block structure. Please remove it. Illegal "
 "structures: {blocks}"
-msgstr "Feltet {field} indeholder en ugyldig blokstruktur. Fjern den venligst. "
+msgstr ""
+"Feltet {field} indeholder en ugyldig blokstruktur. Fjern den venligst. "
 "Ugyldige strukturer: {blocks}"
 
 #: forms/club.py:62
@@ -47,7 +48,8 @@ msgstr "Feltet {field} indeholder en ugyldig blokstruktur. Fjern den venligst. "
 msgid ""
 "The {field} contains an illegal token '{token}'. Please remove it. Legal "
 "tokens: {legal}"
-msgstr "Feltet {field} indeholder en ugyldig token '{token}'. Fjern den venligst. "
+msgstr ""
+"Feltet {field} indeholder en ugyldig token '{token}'. Fjern den venligst. "
 "Gyldige tokens: {legal}"
 
 #: models/club.py:14
@@ -78,6 +80,10 @@ msgstr "leder"
 #, python-brace-format
 msgid "{name} of {club}"
 msgstr "{name} fra {club}"
+
+#: models/club.py:104
+msgid "Welcome"
+msgstr "Velkommen"
 
 #: models/club.py:118
 msgid "Type"
