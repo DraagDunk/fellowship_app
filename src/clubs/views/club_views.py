@@ -36,7 +36,7 @@ class ClubMembershipCreateView(ManagerRequiredMixin, CreateView):
         form.instance.club = self.request.user.membership.club
         return super().form_valid(form)
 
-class ClubWelcomeEmailView(ManagerRequiredMixin, UpdateView):
+class ClubWelcomeEmailUpdateView(ManagerRequiredMixin, UpdateView):
     model = ClubEmailTemplate
     template_name = "welcome_email.html"
     form_class = ClubWelcomeEmailForm
@@ -52,4 +52,4 @@ class ClubWelcomeEmailView(ManagerRequiredMixin, UpdateView):
         return template
 
     def get_success_url(self):
-        return reverse_lazy("club_welcome_email")
+        return reverse_lazy("home_page")

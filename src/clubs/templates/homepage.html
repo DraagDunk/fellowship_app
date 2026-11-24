@@ -11,7 +11,7 @@
            href="{% url "voting_rounds" %}"><i class="fa-solid fa-square-poll-vertical"></i></a>
         {% if request.user.is_manager %}
             <a class="home_page button" href="{% url "members" %}"><i class="fa-solid fa-user"></i></a>
-            <a class="home_page button" href="{% url "club_welcome_email" %}"><i class="fa-solid fa-gear"></i></a>
+            <a class="home_page button" href="{% url "club_welcome_email_edit" %}"><i class="fa-solid fa-gear"></i></a>
         {% endif %}
     </section>
     {% for round in club.current_suggestion_rounds %}
