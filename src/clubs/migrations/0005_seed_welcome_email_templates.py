@@ -8,7 +8,7 @@ def seed_welcome_templates(apps, schema_editor):
     for club in Club.objects.all():
         ClubEmailTemplate.objects.get_or_create(
             club=club,
-            template_type="welcome",
+            template_type="WE",
             defaults={
                 "subject": "Velkommen til [[CLUB_NAME]]",
                 "body": (
@@ -26,7 +26,7 @@ def seed_welcome_templates(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("clubs", "0004_emailtemplate"),
+        ("clubs", "0004_clubemailtemplate"),
     ]
 
     operations = [
