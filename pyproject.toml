@@ -24,7 +24,6 @@ dev = [
     "pytest-django==4.14.0",
     "pre-commit==4.6.2",
     "djlint==1.46.4",
-    "django-stubs==6.1.2",
 ]
 
 [tool.uv]
