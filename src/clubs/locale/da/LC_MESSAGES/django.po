@@ -39,8 +39,8 @@ msgstr "Efternavn"
 msgid ""
 "The {field} contains an illegal block structure. Please remove it. Illegal "
 "structures: {blocks}"
-msgstr "Feltet {field} indeholder en ugyldig blok struktur. Fjern den venligst. "
-"Ugyldig strukturer: {blocks}"
+msgstr "Feltet {field} indeholder en ugyldig blokstruktur. Fjern den venligst. "
+"Ugyldige strukturer: {blocks}"
 
 #: forms/club.py:62
 #, python-brace-format
