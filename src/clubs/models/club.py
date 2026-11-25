@@ -91,14 +91,6 @@ class ClubEmailTemplate(models.Model):
                     "[[CLUB_NAME]]"
                 )
 
-    # TODO: Add logic to these later
-    TOKENS = {
-        "FULL_NAME",
-        "FIRST_NAME",
-        "CLUB_NAME",
-        "SET_PASSWORD_URL",
-    }
-
 
     class ClubEmailTemplateType(models.TextChoices):
         WELCOME = "WE", _("Welcome")
