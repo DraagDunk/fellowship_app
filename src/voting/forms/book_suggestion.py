@@ -42,5 +42,4 @@ class BookSuggestionForm(forms.ModelForm):
             b.pk: b for b in BookCore.objects.filter(pk__in=book_field.queryset)
         }
         pitch_field = self.fields["pitch"]
-        pitch_field.initial = ""
         pitch_field.label = _("Why should we read this book?")

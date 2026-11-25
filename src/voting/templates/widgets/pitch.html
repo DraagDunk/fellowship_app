@@ -1,6 +1,4 @@
 {% load i18n %}
 <div class="textarea_container">
-    <textarea id="textarea__{{ widget.value|stringformat:'s' }}"
-              value="{{ widget.value|stringformat:'s' }}"
-              name="{{ widget.name }}"></textarea>
+    <textarea id="textarea__{{ widget.name }}" name="{{ widget.name }}"></textarea>
 </div>
