@@ -17,6 +17,7 @@ class BookSuggestion(models.Model):
         on_delete=models.CASCADE,
         related_name="book_suggestions",
     )
+    pitch = models.TextField(verbose_name=_("Pitch"), default="")
     voting_round = models.ForeignKey(
         VotingRound,
         verbose_name=_("Voting round"),
