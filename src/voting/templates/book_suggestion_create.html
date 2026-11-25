@@ -7,5 +7,6 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <button type="submit" class="big">{% translate "Suggest" %}</button>
     </form>
 {% endblock content %}

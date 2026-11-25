@@ -22,18 +22,25 @@ class BookSelectWidget(forms.Select):
         return option
 
 
+class PitchWidget(forms.Textarea):
+    template_name = "widgets/pitch.html"
+
+
 class BookSuggestionForm(forms.ModelForm):
     class Meta:
         model = BookSuggestion
-        fields = ("book",)
-        widgets = {"book": BookSelectWidget()}
+        fields = ("book", "pitch")
+        widgets = {"book": BookSelectWidget(), "pitch": PitchWidget()}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        field = self.fields["book"]
-        field.empty_label = None
-        field.label = _("Select the book you want to suggest")
-        field.required = True
-        field.widget.books = {
-            b.pk: b for b in BookCore.objects.filter(pk__in=field.queryset)
+        book_field = self.fields["book"]
+        book_field.empty_label = None
+        book_field.label = _("Select the book you want to suggest")
+        book_field.required = True
+        book_field.widget.books = {
+            b.pk: b for b in BookCore.objects.filter(pk__in=book_field.queryset)
         }
+        pitch_field = self.fields["pitch"]
+        pitch_field.initial = ""
+        pitch_field.label = _("Why should we read this book?")
