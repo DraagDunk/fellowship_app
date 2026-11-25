@@ -25,6 +25,8 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "super duper secret")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", default="0") != "0"
 
+APP_BASE_URL = os.environ.get("DJANGO_APP_BASE_URL", "http://127.0.0.1:8000")
+
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
 
 CSRF_TRUSTED_ORIGINS = os.environ.get(
@@ -38,6 +40,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOG_LEVEL = os.environ.get("DJANGO_LOG_LEVEL", "WARNING")
 
+EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
+DEFAULT_EMAIL_SENDER = os.environ.get("DJANGO_DEFAULT_EMAIL_SENDER", "noreply@example.com")
+
+# Password reset timeout in seconds. Currently set to 3 days
+PASSWORD_RESET_TIMEOUT = 60 * 60 * 24 * 3
 
 # Application definition
 

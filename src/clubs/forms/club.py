@@ -1,8 +1,11 @@
 import re
 
+from clubs.services import ClubWelcomeEmailTemplateTokens
 from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+
+from clubs.services.email_service import EMAIL_REPLACE_TOKEN_REGULAR_EXPRESSION
 
 from ..models.club import ClubMembership, ClubEmailTemplate
 
@@ -43,7 +46,6 @@ class ClubWelcomeEmailForm(forms.ModelForm):
         model = ClubEmailTemplate
         fields = ["subject", "body"]
 
-    VALID_TOKENS_REGULAR_EXPRESSION = re.compile(r"\[\[(.*?)\]\]", re.DOTALL)
     DJANGO_SYNTAX_REGULAR_EXPRESSION = re.compile(r"{{|}}|{%|%}|{#|#}")
     ILLEGAL_STRUCTURES = ["{{", "}}", "{%", "%}", "{#", "#}"]
 
@@ -56,13 +58,14 @@ class ClubWelcomeEmailForm(forms.ModelForm):
                     blocks=", ".join(ClubWelcomeEmailForm.ILLEGAL_STRUCTURES),
                 )
             )
-        for token in ClubWelcomeEmailForm.VALID_TOKENS_REGULAR_EXPRESSION.findall(text):
-            if token not in ClubEmailTemplate.TOKENS:
+        tokens = ClubWelcomeEmailTemplateTokens.names()
+        for token in EMAIL_REPLACE_TOKEN_REGULAR_EXPRESSION.findall(text):
+            if token not in tokens:
                 raise forms.ValidationError(
                     _("The {field} contains an illegal token '{token}'. Please remove it. Legal tokens: {legal}").format(
                         field=field,
                         token=token,
-                        legal=", ".join(sorted(ClubEmailTemplate.TOKENS))
+                        legal=", ".join(sorted(tokens))
                     )
                 )
         return text
