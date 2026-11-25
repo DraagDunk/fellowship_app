@@ -39,6 +39,8 @@ class BookSuggestionSelectWidget(forms.CheckboxSelectMultiple):
             _, opts, _ = option
             for opt in opts:
                 opt["book"] = opt["value"].instance.book
+                opt["pitch"] = opt["value"].instance.pitch
+                opt["suggested_by"] = opt["value"].instance.user
         return context
 
 

@@ -13,5 +13,18 @@
         <div class="selected label">
             <i class="fa-solid fa-circle-check"></i>
         </div>
+        {% if widget.pitch %}
+            <div class="pitch">
+                <button type="button" popovertarget="pitch_dialog__{{ widget.book.pk }}">
+                    <i class="fa-solid fa-comment"></i>
+                </button>
+            </div>
+        {% endif %}
     </label>
+    {% if widget.pitch %}
+        <dialog class="pitch_dialog" id="pitch_dialog__{{ widget.book.pk }}" popover>
+            <p><b>{{ widget.suggested_by.get_full_name }}:</b></p>
+            <p>{{ widget.pitch }}</p>
+        </dialog>
+    {% endif %}
 </li>
