@@ -10,7 +10,7 @@ from django.utils.http import urlsafe_base64_encode
 from clubs.models import ClubEmailTemplate, ClubMembership
 from fellowship_app import settings
 
-EMAIL_REPLACE_TOKEN_REGULAR_EXPRESSION = re.compile(r"\[\[([A-Z_]+)\]\]")
+EMAIL_REPLACE_TOKEN_REGULAR_EXPRESSION = re.compile(r"\[\[([A-Za-z_]+)\]\]")
 
 @dataclass(frozen=True)
 class ClubWelcomeEmailTemplateTokens:
