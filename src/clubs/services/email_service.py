@@ -42,17 +42,14 @@ class ClubWelcomeEmailTemplateContext:
         path = reverse("password_reset_confirm", kwargs={"uidb64": uid, "token": token})
         return f"{settings.APP_BASE_URL.rstrip('/')}{path}"
 
-class UnknownTokenError(Exception):
-    def __init__(self, token):
-        self.token = token
-        super().__init__(f"Unknown token [[{token}]]")
-
 def _render_text(text: str, tokens: ClubWelcomeEmailTemplateTokens):
     values = asdict(tokens)
     def sub(match):
         key = match.group(1)
         if key not in values:
-            raise UnknownTokenError(key)
+            # Should only happen if templates contains old tokens
+            # Defaults to empty string for now
+            return ""
         return str(values[key])
 
     return EMAIL_REPLACE_TOKEN_REGULAR_EXPRESSION.sub(sub, text)
