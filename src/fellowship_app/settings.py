@@ -40,9 +40,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOG_LEVEL = os.environ.get("DJANGO_LOG_LEVEL", "WARNING")
 
-EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
-DEFAULT_EMAIL_SENDER = os.environ.get("DJANGO_DEFAULT_EMAIL_SENDER", "noreply@example.com")
-
 # Password reset timeout in seconds. Currently set to 3 days
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 24 * 3
 
@@ -180,3 +177,18 @@ LOGGING = {
     },
     # Add loggers we want in the future
 }
+
+# Email
+EMAIL_MODE = os.environ.get("DJANGO_EMAIL_MODE", "test")
+DEFAULT_EMAIL_SENDER = os.environ.get("DJANGO_DEFAULT_EMAIL_SENDER", "noreply@example.com")
+
+if EMAIL_MODE.lower() == "test":
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+elif EMAIL_MODE.lower() == "prod":
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST")
+    EMAIL_PORT = os.environ.get("DJANGO_EMAIL_PORT")
+    EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD")
+    EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS", "True")
+    EMAIL_TIMEOUT = os.environ.get("DJANGO_EMAIL_TIMEOUT", 10)
