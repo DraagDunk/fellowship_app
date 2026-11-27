@@ -56,6 +56,12 @@ Run the following command if postgresql-client is installed:
 sudo -U postgres psql -h localhost -p 5432 -U postgres -d default_db
 ```
 
+#### Testing emails
+
+Using the default docker-compose.yml file, a mailpit container has been set up. This lets the developer send emails and view them in their final form. Go to http://localhost:8025 to access the WebUI of mailpit and view the emails sent to it.
+
+It is configured to accept 5000 emails at maximum. This can be increased if needed, but the container can be reset by deleting its volume.
+
 ## Installing new dependencies
 
 This gives you a virtual environment with the correct python version and all dependencies installed.

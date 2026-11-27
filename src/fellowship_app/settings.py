@@ -179,16 +179,11 @@ LOGGING = {
 }
 
 # Email
-EMAIL_MODE = os.environ.get("DJANGO_EMAIL_MODE", "test")
 DEFAULT_EMAIL_SENDER = os.environ.get("DJANGO_DEFAULT_EMAIL_SENDER", "noreply@example.com")
-
-if EMAIL_MODE.lower() == "test":
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-elif EMAIL_MODE.lower() == "prod":
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST")
-    EMAIL_PORT = os.environ.get("DJANGO_EMAIL_PORT")
-    EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD")
-    EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS", "true").lower() in ("true", "1", "yes")
-    EMAIL_TIMEOUT = int(os.environ.get("DJANGO_EMAIL_TIMEOUT", 10))
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST")
+EMAIL_PORT = os.environ.get("DJANGO_EMAIL_PORT")
+EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS", "true").lower() in ("true", "1", "yes")
+EMAIL_TIMEOUT = int(os.environ.get("DJANGO_EMAIL_TIMEOUT", 10))
